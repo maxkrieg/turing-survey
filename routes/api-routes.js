@@ -1,4 +1,6 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 var apiRouter = express.Router();
 var Survey = require('../lib/surveys.js');
 //////////////////////////////////////////
@@ -26,6 +28,57 @@ apiRouter.get('/:id', function(req, res) {
 });
 
 
+
+apiRouter.post('/', jsonParser);
+apiRouter.post('/', function(req, res) {
+  Survey.create(req.body, function(error, survey) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
+    }
+  });
+});
+
+apiRouter.put('/:id', jsonParser);
+apiRouter.put('/:id', function(req, res) {
+  Survey.findByIdidAndUpdate(req.params.id, req.body, function(error, survey) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+apiRouter.delete('/:id', function(req, res) {
+  Survey.remove({
+    _id: req.params.id
+  }, function(error) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(204);
+    }
+  });
+});
+
+apiRouter.get('/:id/questions/:question_id', function(req, res) {
+  Survey.find({
+    _id: req.params.id
+  }, {
+    questions: {
+      $elemMatch: {
+        _id: req.params.question_id
+      }
+    }
+  }, function(err, question) {
+    res.json(question);
+  });
+});
 
 
 //////////////////////////////////////////
