@@ -1,5 +1,4 @@
 // BASE SETUP /////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////
 
 // MONGOOSE & MONGODB
 var mongoose = require('mongoose');
@@ -26,18 +25,23 @@ var stylus = require('stylus');
 var nib = require('nib');
 
 // IMPORT SCHEMA
-var Contact = require('./lib/contacts.js');
-var Article = require('./lib/articles.js');
+var Survey = require('./lib/surveys.js');
 
 // IMPORT ROUTES
 // SAMPLE Import of Routes
-var routes = require('./routes/index');
-var contacts = require('./routes/contacts');
-var auth = require('./routes/auth');
-var apiContacts = require('./routes/api-routes');
+// var surveys = require('./routes/surveys');
+var apiRoutes = require('./routes/api-routes');
 
 // SAMPLE Middleware Mounting for Routes
-app.use('/', routes);
-app.use('/contacts/', contacts);
-app.use('/auth/', auth);
-app.user('/api/contacts', apiContacts);
+// app.use('/surveys', surveys);
+app.use('/api/surveys', apiRoutes);
+
+
+
+// SERVER /////////////////////////////////////////////////////////
+
+var server = app.listen(3000, function() {
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log("Example app listening at http://%s:%s", host, port);
+});
