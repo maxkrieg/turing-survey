@@ -1,6 +1,6 @@
 var async = require('async');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/wdi');
+mongoose.connect('mongodb://localhost/turingdb');
 
 var Survey = require('../lib/surveys.js');
 
@@ -17,13 +17,13 @@ var createClassSurvey = function(done) {
       title: 'How well do you understand Node.js?',
       helpText: 'Simply answer how you feel today on a scale of 1-5.',
       type: 'Scale',
-      choices: [1, 2, 3, 4, 5]
+      choices: [1, 2, 3, 4, 5],
       responses: []
     }, {
       title: 'What do you want for outcomes lunch?',
       helpText: 'Choose one of the following choices.',
       type: 'Multiple Choice',
-      choices: ['Naanwiches', 'Pizza', 'Salad', 'Waffles', 'Burritos']
+      choices: ['Naanwiches', 'Pizza', 'Salad', 'Waffles', 'Burritos'],
       responses: []
     }, {
       title: 'What would you improve about the WDI course?',
