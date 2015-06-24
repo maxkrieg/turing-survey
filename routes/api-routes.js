@@ -43,7 +43,7 @@ apiRouter.post('/', function(req, res) {
 
 apiRouter.put('/:id', jsonParser);
 apiRouter.put('/:id', function(req, res) {
-  Survey.findByIdidAndUpdate(req.params.id, req.body, function(error, survey) {
+  Survey.findByIdAndUpdate(req.params.id, req.body, function(error, survey) {
     if (error) {
       console.log(error);
       res.sendStatus(400);
@@ -66,6 +66,7 @@ apiRouter.delete('/:id', function(req, res) {
   });
 });
 
+
 apiRouter.get('/:id/questions/:question_id', function(req, res) {
   Survey.find({
     _id: req.params.id
@@ -76,9 +77,28 @@ apiRouter.get('/:id/questions/:question_id', function(req, res) {
       }
     }
   }, function(err, question) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    }
     res.json(question);
   });
 });
+
+apiRouter.post('/:id/questions/', jsonParser);
+apiRouter.post('/:id/questions/', function(req, res) {
+  var survey = Survey.find({
+    _id: req.params.id
+  });
+  survey.questions.push(req.body);
+  if (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
+  res.sendStatus(201);
+});
+
+
 
 
 //////////////////////////////////////////
