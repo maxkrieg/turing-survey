@@ -34,7 +34,7 @@ var Article = require('./lib/articles.js');
 var routes = require('./routes/index');
 var contacts = require('./routes/contacts');
 var auth = require('./routes/auth');
-var apiContacts = require('./routes-api/contacts');
+var apiContacts = require('./routes/api-routes');
 
 // SAMPLE Middleware Mounting for Routes
 app.use('/', routes);
