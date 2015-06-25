@@ -13,7 +13,9 @@ appRouter.get('/', function(req, res) {
       console.log(err);
       res.sendStatus(404);
     }
-    res.json(surveyList);
+    res.render('dashboard', {
+      surveys: surveyList
+    });
   });
 });
 
