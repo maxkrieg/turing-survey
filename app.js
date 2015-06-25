@@ -27,7 +27,6 @@ var nib = require('nib');
 // IMPORT SCHEMA
 var Survey = require('./lib/surveys.js');
 
-
 // IMPORT ROUTES
 var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
