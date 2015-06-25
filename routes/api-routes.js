@@ -87,15 +87,9 @@ apiRouter.get('/:id/questions/:question_id', function(req, res) {
 
 apiRouter.post('/:id/questions/', jsonParser);
 apiRouter.post('/:id/questions/', function(req, res) {
-  var survey = Survey.find({
+  Survey.update({
     _id: req.params.id
-  });
-  survey.questions.push(req.body);
-  if (err) {
-    console.log(err);
-    res.sendStatus(400);
-  }
-  res.sendStatus(201);
+  }).
 });
 
 
