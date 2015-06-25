@@ -29,12 +29,11 @@ var Survey = require('./lib/surveys.js');
 
 
 // IMPORT ROUTES
-// SAMPLE Import of Routes
-// var surveys = require('./routes/surveys');
+var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
 
-// SAMPLE Middleware Mounting for Routes
-// app.use('/surveys', surveys);
+// Middleware Mounting for Routes
+app.use('/surveys', appRoutes);
 app.use('/api/surveys', apiRoutes);
 
 
