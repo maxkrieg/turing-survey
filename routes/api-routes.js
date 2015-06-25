@@ -5,6 +5,8 @@ var apiRouter = express.Router();
 var Survey = require('../lib/surveys.js');
 //////////////////////////////////////////
 
+// SURVEY ROUTES
+
 apiRouter.get('/', function(req, res) {
   Survey.find({}, function(err, surveyList) {
     if (err) {
@@ -66,6 +68,7 @@ apiRouter.delete('/:id', function(req, res) {
   });
 });
 
+// QUESTION ROUTES
 
 apiRouter.get('/:id/questions/:question_id', function(req, res) {
   Survey.find({
@@ -122,13 +125,25 @@ apiRouter.put('/:id/questions/:question_id', function(req, res) {
   });
 });
 
-apiRouter.delete('/:id/questions/:question_id'.function(req, res) {
 
+apiRouter.delete('/:id/questions/:question_id', function(req, res) {
+  Survey.update({
+    _id: req.params.id,
+  }, {
+    $pull: {
+      questions: {
+        _id: req.params.question_id
+      }
+    }
+  }, function(err, question) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    console.log('question deleted');
+    res.sendStatus(204);
+  });
 });
-
-
-
-
 
 //////////////////////////////////////////
 module.exports = apiRouter;
