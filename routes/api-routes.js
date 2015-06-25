@@ -88,9 +88,44 @@ apiRouter.get('/:id/questions/:question_id', function(req, res) {
 apiRouter.post('/:id/questions/', jsonParser);
 apiRouter.post('/:id/questions/', function(req, res) {
   Survey.update({
-    _id: req.params.id
-  }).
+    _id: req.params.id,
+  }, {
+    $push: {
+      questions: req.body
+    }
+  }, function(err, question) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    console.log(question);
+    res.sendStatus(201);
+  });
 });
+
+apiRouter.put('/:id/questions/:question_id', jsonParser);
+apiRouter.put('/:id/questions/:question_id', function(req, res) {
+  Survey.update({
+    _id: req.params.id,
+    'questions._id': req.params.question_id
+  }, {
+    $set: {
+      'questions.$': req.body
+    }
+  }, function(err, question) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    console.log('updated question');
+    res.sendStatus(200);
+  });
+});
+
+apiRouter.delete('/:id/questions/:question_id'.function(req, res) {
+
+});
+
 
 
 
