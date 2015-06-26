@@ -1,14 +1,18 @@
 extends layout
-block main
-  .navbar
-    h4 Survey App
-    button Login
-    button Sign Up
+block content
+  include navbar-home
   .banner
-    h4 Easily create and share custom surveys
-    button Get Started Now
-    h2 Get the answers you need
+    h1 Easily create and share custom surveys
+    h1 Get the answers you need
+    button.waves-effect.waves-light.btn Get Started Now
+      i.fafa-angle-double-right
+
   .secondbanner
-    h2 Login or signup to get started today.
-    h2 Customer your survey type, questions, and responses
-    h2 Share your surveys and easily track results
+    h2
+      i.fa.fa-check     Login or signup to get started today.
+    h2
+      i.fa.fa-check     Customer your survey type, questions, and responses
+    h2
+      i.fa.fa-check     Share your surveys and easily track results
+
+  .footer

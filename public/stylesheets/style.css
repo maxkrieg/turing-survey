@@ -1,3 +1,60 @@
 body {
-  padding-top: 70px;
+  padding-top: 70s;
+  background-color: #e7f1f4;
+}
+.banner {
+  margin: 0 auto;
+  display: table;
+  text-align: center;
+  background-repeat: no-repeat;
+  margin-top: 3em;
+  width: 100%;
+  height: 21em;
+  color: #fff;
+  background-color: #364a88;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #5956ae;
+}
+.secondbanner {
+  margin: 0 auto;
+  display: table;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 3em;
+  color: #6cb56c;
+  margin-bottom: 4em;
+}
+.navbar-default .navbar-brand {
+  color: #67b25f;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-top: 2em;
+}
+.footer {
+  background-color: #bbcee7;
+  width: 100%;
+  height: 80px;
 }
