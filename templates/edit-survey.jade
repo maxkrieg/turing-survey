@@ -1,4 +1,31 @@
 extend layout
 block content
   include navbar-user.jade
-  h1 This is the edit-survey template for #{survey.title}
+  .container
+    .row
+      .col-sm-12
+        h2#survey.id #{survey.title}
+        form(role="form")
+          .form-group
+          label(for="surveytitle") Survey Title
+          input#survey-title.form-control(name="survey-title", type="text", value=survey.title)
+          .form-group
+          label(for="surveydescription") Survey Description
+          input#survey-description.form-control(name="description", type="text", value=survey.description)
+          h3 Questions
+          .list-group#survey-questions
+            for question in survey.questions
+              article(class="list-group-item")
+                h4 #{question.title}
+                .form-group
+                  label(for="title") Title
+                  input(name="title" value=question.title)
+                .form-group
+                  label(for="help-text") Help Text
+                  input(name="help-text" value=question.helpText)
+                div.btn-group.btn-group-sm
+                  button(class="btn btn-default", data-id="#{question.id}", data-type="#{question.type}") Edit
+                  button.btn.btn-default Delete
+        button.btn.btn-primary(type="submit") Update Survey
+
+
