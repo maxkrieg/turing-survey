@@ -7,7 +7,7 @@ var Survey = require('../lib/surveys.js');
 
 // SURVEY ROUTES
 
-// Get all surveys: dashboard
+// View survey list: dashboard.jade
 appRouter.get('/', function(req, res) {
   Survey.find({}, function(err, surveyList) {
     if (err) {
@@ -20,8 +20,8 @@ appRouter.get('/', function(req, res) {
   });
 });
 
-// View specific Survey as Guest: url-survey
-appRouter.get('/:id', function(req, res) {
+// View specific Survey as Guest: url-survey.jade
+appRouter.get('/:id/guest', function(req, res) {
   Survey.find({
     _id: req.params.id
   }, function(err, survey) {
@@ -35,8 +35,8 @@ appRouter.get('/:id', function(req, res) {
   });
 });
 
-// View specific Survey as User: edit-survey
-appRouter.get('/:id/edit', function(req, res) {
+// View specific Survey as User: edit-survey.jade
+appRouter.get('/:id', function(req, res) {
   Survey.find({
     _id: req.params.id
   }, function(err, survey) {
@@ -50,7 +50,7 @@ appRouter.get('/:id/edit', function(req, res) {
   });
 });
 
-// Create new survey: create-survey
+// Create new survey: survey.jade
 appRouter.post('/', jsonParser);
 appRouter.post('/', function(req, res) {
   Survey.create(req.body, function(error, survey) {
@@ -58,12 +58,14 @@ appRouter.post('/', function(req, res) {
       console.log(error);
       res.sendStatus(400);
     } else {
-      fs.readFile('./templates/create-survey.jade', 'utf8', function(err, data) {
+      // This will take the newly created survey and fill in the survey.jade template
+      fs.readFile('./templates/survey.jade', 'utf8', function(err, data) {
         if (err) {
           res.sendStatus(400);
         }
         var surveyCompiler = jade.compile(data);
         var html = surveyCompiler(survey);
+        // This sends the survey template filled in back to client
         res.send(html);
         res.status(201);
       });
@@ -84,6 +86,7 @@ appRouter.put('/:id', function(req, res) {
   });
 });
 
+// Delete specific survey
 appRouter.delete('/:id', function(req, res) {
   Survey.remove({
     _id: req.params.id
@@ -99,23 +102,24 @@ appRouter.delete('/:id', function(req, res) {
 
 // QUESTION ROUTES
 
-appRouter.get('/:id/questions/:question_id', function(req, res) {
-  Survey.find({
-    _id: req.params.id
-  }, {
-    questions: {
-      $elemMatch: {
-        _id: req.params.question_id
-      }
-    }
-  }, function(err, question) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(404);
-    }
-    res.json(question);
-  });
-});
+// View a specific question, don't think we'll need this
+// appRouter.get('/:id/questions/:question_id', function(req, res) {
+//   Survey.find({
+//     _id: req.params.id
+//   }, {
+//     questions: {
+//       $elemMatch: {
+//         _id: req.params.question_id
+//       }
+//     }
+//   }, function(err, question) {
+//     if (err) {
+//       console.log(err);
+//       res.sendStatus(404);
+//     }
+//     res.json(question);
+//   });
+// });
 
 appRouter.post('/:id/questions/', jsonParser);
 appRouter.post('/:id/questions/', function(req, res) {
