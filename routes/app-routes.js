@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var appRouter = express.Router();
 var Survey = require('../lib/surveys.js');
+var util = require('util');
 //////////////////////////////////////////
 
 // SURVEY ROUTES
@@ -37,7 +38,7 @@ appRouter.get('/:id/guest', function(req, res) {
 
 // View specific Survey as User: edit-survey.jade
 appRouter.get('/:id', function(req, res) {
-  Survey.find({
+  Survey.findOne({
     _id: req.params.id
   }, function(err, survey) {
     if (err) {
