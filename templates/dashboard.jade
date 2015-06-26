@@ -5,14 +5,16 @@ block content
     .row
       .col-sm-12
         h2 Dashboard
-        .btn.btn-default Create Survey
+        .btn.btn-primary Create Survey
         .list-group
           for survey in surveys
-            a.list-group-item(href='#')
+            section.list-group-item(href='#')
               h4.list-group-item-heading #{survey.title}
               p.list-group-item-text #{survey.description}
               div.btn-group.btn-group-sm(role='group')
-                button.btn.btn-default(href="#") View Results
-                button.btn.btn-default(href="surveys/#{survey.id}") Edit Survey
+                a.btn.btn-default(href="#s") View Results
+                a.btn.btn-default(href="surveys/#{survey.id}") Edit Survey
+
+
 
 
