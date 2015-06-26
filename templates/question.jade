@@ -1,0 +1,7 @@
+h4 #{title}
+h3 #{helpText}
+  ul
+    each choice in [1, 2, 3, 4, 5]
+      li.radio= choice
+        label
+          input(type="radio", name="optradio")

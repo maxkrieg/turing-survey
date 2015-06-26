@@ -21,6 +21,11 @@ appRouter.get('/', function(req, res) {
   });
 });
 
+//View the template to create a new survey
+appRouter.get('/create', function(req, res) {
+  res.render('create-survey');
+});
+
 // View specific Survey as Guest: url-survey.jade
 appRouter.get('/:id/guest', function(req, res) {
   Survey.find({
@@ -51,6 +56,7 @@ appRouter.get('/:id', function(req, res) {
   });
 });
 
+
 // Create new survey: survey.jade
 appRouter.post('/', jsonParser);
 appRouter.post('/', function(req, res) {
@@ -60,7 +66,7 @@ appRouter.post('/', function(req, res) {
       res.sendStatus(400);
     } else {
       // This will take the newly created survey and fill in the survey.jade template
-      fs.readFile('./templates/survey.jade', 'utf8', function(err, data) {
+      fs.readFile('./templates/create-survey.jade', 'utf8', function(err, data) {
         if (err) {
           res.sendStatus(400);
         }

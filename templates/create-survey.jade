@@ -1,0 +1,13 @@
+extend layout
+block content
+  include navbar-user
+  .container
+    .row
+      .col-sm-12
+        input.form-control(type="text", placeholder="Title")
+        input.form-control(type="text", placeholder="Description")
+        include question
+        include questionform
+        br
+        br
+        button Save Survey
