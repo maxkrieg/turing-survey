@@ -30,12 +30,26 @@ var Survey = require('./lib/surveys.js');
 // IMPORT ROUTES
 var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
+var homeRoutes = require('./routes/index');
 
-// Middleware Mounting for Routes
+// ROUTE MOUNTING
 app.use('/surveys', appRoutes);
 app.use('/api/surveys', apiRoutes);
+app.use('/', homeRoutes);
 
-
+// STYLUS AND NIB CONFIG
+// creates compile func, calls stylus & nib middlewear in stack
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .use(nib());
+}
+// set up express to use stylus middlewear and pass in compile function as object
+app.use(stylus.middleware({
+  src: __dirname + '/public',
+  compile: compile
+}));
+app.use(express.static(__dirname + '/public'));
 
 // SERVER /////////////////////////////////////////////////////////
 

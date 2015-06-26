@@ -7,6 +7,7 @@ var Survey = require('../lib/surveys.js');
 
 // SURVEY ROUTES
 
+// Get all surveys: dashboard
 appRouter.get('/', function(req, res) {
   Survey.find({}, function(err, surveyList) {
     if (err) {
@@ -19,6 +20,7 @@ appRouter.get('/', function(req, res) {
   });
 });
 
+// View specific Survey as Guest: url-survey
 appRouter.get('/:id', function(req, res) {
   Survey.find({
     _id: req.params.id
@@ -27,12 +29,28 @@ appRouter.get('/:id', function(req, res) {
       console.log(err);
       res.sendStatus(404);
     }
-    res.json(survey);
+    res.render('url-survey', {
+      survey: survey
+    });
   });
 });
 
+// View specific Survey as User: edit-survey
+appRouter.get('/:id/edit', function(req, res) {
+  Survey.find({
+    _id: req.params.id
+  }, function(err, survey) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    }
+    res.render('edit-survey', {
+      survey: survey
+    });
+  });
+});
 
-
+// Create new survey: create-survey
 appRouter.post('/', jsonParser);
 appRouter.post('/', function(req, res) {
   Survey.create(req.body, function(error, survey) {
@@ -40,11 +58,20 @@ appRouter.post('/', function(req, res) {
       console.log(error);
       res.sendStatus(400);
     } else {
-      res.sendStatus(201);
+      fs.readFile('./templates/create-survey.jade', 'utf8', function(err, data) {
+        if (err) {
+          res.sendStatus(400);
+        }
+        var surveyCompiler = jade.compile(data);
+        var html = surveyCompiler(survey);
+        res.send(html);
+        res.status(201);
+      });
     }
   });
 });
 
+// Update specific survey
 appRouter.put('/:id', jsonParser);
 appRouter.put('/:id', function(req, res) {
   Survey.findByIdAndUpdate(req.params.id, req.body, function(error, survey) {
