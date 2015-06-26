@@ -121,6 +121,7 @@ appRouter.delete('/:id', function(req, res) {
 //   });
 // });
 
+// Create new question: question.jade
 appRouter.post('/:id/questions/', jsonParser);
 appRouter.post('/:id/questions/', function(req, res) {
   Survey.update({
