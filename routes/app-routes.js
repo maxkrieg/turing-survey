@@ -65,7 +65,7 @@ appRouter.post('/', function(req, res) {
         }
         var surveyCompiler = jade.compile(data);
         var html = surveyCompiler(survey);
-        // This sends the survey template filled in back to client
+        // This sends the filled in survey template back to client
         res.send(html);
         res.status(201);
       });
@@ -134,12 +134,23 @@ appRouter.post('/:id/questions/', function(req, res) {
     if (err) {
       console.log(err);
       res.sendStatus(400);
+    } else {
+      // This will take the newly created question and fill in the question.jade template
+      fs.readFile('./templates/question.jade', 'utf8', function(err, data) {
+        if (err) {
+          res.sendStatus(400);
+        }
+        var questionCompiler = jade.compile(data);
+        var html = questionCompiler(question);
+        // This sends the filled in question template back to client
+        res.send(html);
+        res.status(201);
+      });
     }
-    console.log(question);
-    res.sendStatus(201);
   });
 });
 
+// Update specific question
 appRouter.put('/:id/questions/:question_id', jsonParser);
 appRouter.put('/:id/questions/:question_id', function(req, res) {
   Survey.update({
@@ -159,7 +170,7 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
   });
 });
 
-
+// Delete specific question
 appRouter.delete('/:id/questions/:question_id', function(req, res) {
   Survey.update({
     _id: req.params.id,
@@ -178,8 +189,6 @@ appRouter.delete('/:id/questions/:question_id', function(req, res) {
     res.sendStatus(204);
   });
 });
-
-
 
 
 
