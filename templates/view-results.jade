@@ -1,3 +1,13 @@
 extend layout
 block content
   include navbar-user
+  .container
+    .row
+      .col-sm-12
+        .list-group#survey-questions
+          for question in survey.questions
+            article(class="list-group-item")
+              h4 #{question.title}
+              h5 #{question.helpText}
+              for response in question.responses
+                li #{response}

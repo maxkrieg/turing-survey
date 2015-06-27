@@ -21,9 +21,24 @@ appRouter.get('/', function(req, res) {
   });
 });
 
-//View the template to create a new survey
+// View the template to create a new survey
 appRouter.get('/create', function(req, res) {
   res.render('create-survey');
+});
+
+// View survey results
+appRouter.get('/:id/results', function(req, res) {
+  Survey.findOne({
+    _id: req.params.id
+  }, function(err, survey) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    }
+    res.render('view-results', {
+      survey: survey
+    });
+  });
 });
 
 // View specific Survey as Guest: url-survey.jade
