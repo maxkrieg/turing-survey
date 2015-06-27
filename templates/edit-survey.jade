@@ -25,22 +25,16 @@ block content
                     label(for="help-text") Help Text
                     input(name="help-text" value=question.helpText)
                   .form-group
-                    label(for="question-type") Change Type from #{question.type} to
-                    .btn-group.btn-group-xs(role="group")
-                      if question.type == 'Multiple Choice'
+                    label(for="question-type") Current Question Type: #{question.type}
+                      p Change question type below
+                      .btn-group.btn-group-xs(role="group")
                         button#edit-survey-scale.btn.btn-default(type="button") Scale
                         button#edit-survey-text.btn.btn-default(type="button") Text
-                      else if question.type == 'Scale'
                         button#edit-survey-multchoice.btn.btn-default(type="button") Multiple Choice
-                        button#edit-survey-text.btn.btn-default(type="button") Text
-                      else if question.type == 'Text'
-                        button#edit-survey-multchoice.btn.btn-default(type="button") Multiple Choice
-                        button#edit-survey-scale.btn.btn-default(type="button") Scale
                   if question.type == 'Multiple Choice'
                     for choice in question.choices
                       .input-group.input-group-sm
-                        span.input-group-addon
-                          input(type="radio", value=choice)
+                        input(type="text", class="form-control", value=choice)
 
                   button.btn.btn-primary.btn-sm(type="submit") Update Quesion
                 div.btn-group.btn-group-sm(role="group")
