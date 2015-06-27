@@ -13,6 +13,8 @@ block content
               p.list-group-item-text #{survey.description}
               div.btn-group.btn-group-sm(role='group')
                 a.btn.btn-default(href="surveys/#{survey.id}/results") View Results
+                a.btn.btn-default(href="surveys/#{survey.id}/guest") View as Guest
+              div.btn-group.btn-group-sm(role='group')
                 a.btn.btn-default(href="surveys/#{survey.id}") Edit
                 a.btn.btn-default Delete
 

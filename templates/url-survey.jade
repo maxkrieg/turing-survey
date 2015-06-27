@@ -1,0 +1,19 @@
+extend layout
+block content
+  include navbar-home
+  .container
+    .row
+      .col-sm-12
+        .list-group#survey-questions
+          h1 #{survey.title}
+          for question in survey.questions
+            article(class="list-group-item")
+              h4 #{question.title}
+              h5 #{question.helpText}
+                //- form(role="form", method="post", action="/surveys/#{survey.id}/questions/#{question.id}", class="form-control form-group")
+                for choice in question.choices
+                  if question.type == "Multiple Choice"
+                    include take-multiple-choice
+                  if question.type == "Scale"
+
+                  if question.type == "Text"
