@@ -43,7 +43,7 @@ appRouter.get('/:id/results', function(req, res) {
 
 // View specific Survey as Guest: url-survey.jade
 appRouter.get('/:id/guest', function(req, res) {
-  Survey.find({
+  Survey.findOne({
     _id: req.params.id
   }, function(err, survey) {
     if (err) {
