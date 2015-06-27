@@ -1,13 +1,17 @@
 extend layout
 block content
   include navbar-user
+  br
+  br
+  br
   .container
     .row
       .col-sm-12
         input.form-control(type="text", placeholder="Title")
-        input.form-control(type="text", placeholder="Description")
+        .form-group
+          label(for="comment") Description
+          textarea#comment.form-control(rows="3")
         include question
         include questionform
         br
-        br
-        button Save Survey
+        input.btn.btn-default(type="submit", value="Save Survey")

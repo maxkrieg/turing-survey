@@ -1,17 +1,15 @@
 
 input(type="text", placeholder="Title")
 input(type="text", placeholder="Help Text")
-
-.btn-group.btn-group-lg.btn-group(role="group", aria-label="...")
-  button.btn.btn-default(type="button") Multiple Choice
-  button.btn.btn-default(type="button") Text
-  button.btn.btn-default(type="button") Scale
+.btn-group.btn-group-md.btn-group(role="group", aria-label="...")
+  input.btn.btn-default(type="button", value="Multiple Choice")
+  input.btn.btn-default(type="button", value="Text")
+  input.btn.btn-default(type="button", value="Scale")
 
 include multiple-choice
-//- include text
-//- include scale
+include scale
 
-button Add Question
+input.btn.btn-default(type="button", value="Add Question")
 
 
 
