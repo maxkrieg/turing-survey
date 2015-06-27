@@ -109,7 +109,6 @@ appRouter.delete('/:id', function(req, res) {
 
 // QUESTION ROUTES
 
-// View a specific question, don't think we'll need this
 // appRouter.get('/:id/questions/:question_id', function(req, res) {
 //   Survey.find({
 //     _id: req.params.id
