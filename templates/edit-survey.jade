@@ -5,23 +5,22 @@ block content
     .row
       .col-sm-12
         h2#survey.id #{survey.title}
-        form(role="form")
-          .form-group
+        .form-group
           label(for="surveytitle") Survey Title
           input#survey-title.form-control(name="survey-title", type="text", value=survey.title)
-          .form-group
+        .form-group
           label(for="surveydescription") Survey Description
           input#survey-description.form-control(name="description", type="text", value=survey.description)
-          h3 Questions
-          .list-group#survey-questions
-            for question in survey.questions
-              article(class="list-group-item")
-                h4 #{question.title}
-                h5 #{question.helpText}
-                div.btn-group.btn-group-sm(role="group")
-                  button(class="btn btn-default", data-id="#{question.id}", data-type="#{question.type}") Edit
-                  button.btn.btn-default Delete
-                include edit-question
-        a.btn.btn-primary(type="submit", href="/surveys") Update Survey
+        h3 Questions
+        .list-group#survey-questions
+          for question in survey.questions
+            article(class="list-group-item")
+              h4 #{question.title}
+              h5 #{question.helpText}
+              div.btn-group.btn-group-sm(role="group")
+                button(class="btn btn-default edit-survey", data-id="#{question.id}", data-type="#{question.type}") Edit
+                button.btn.btn-default Delete
+              include edit-question
+      a.btn.btn-primary(type="submit", href="/surveys") Update Survey
 
 

@@ -1,4 +1,4 @@
-form(role="form", method="post", action="/surveys/#{survey.id}/questions/#{question.id}?_method=put")
+.edit-question-form(data-question="#{question.id}")
   .form-group
     label(for="title") Title
     input(name="title" value=question.title)
