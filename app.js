@@ -32,11 +32,6 @@ var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
 var homeRoutes = require('./routes/index');
 
-// ROUTE MOUNTING
-app.use('/surveys', appRoutes);
-app.use('/api/surveys', apiRoutes);
-app.use('/', homeRoutes);
-
 // STYLUS AND NIB CONFIG
 // creates compile func, calls stylus & nib middlewear in stack
 function compile(str, path) {
@@ -50,6 +45,13 @@ app.use(stylus.middleware({
   compile: compile
 }));
 app.use(express.static(__dirname + '/public'));
+
+// ROUTE MOUNTING
+app.use('/surveys', appRoutes);
+app.use('/api/surveys', apiRoutes);
+app.use('/', homeRoutes);
+
+
 
 
 // SERVER /////////////////////////////////////////////////////////
