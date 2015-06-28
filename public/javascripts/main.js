@@ -57,10 +57,8 @@ $(document).ready(function() {
     $('.edit-question-form').hide();
     var questionId = $(this).attr('data-id');
     $('[data-question="' + questionId + '"]').show();
-    console.log($(this));
 
     var legacyType = $(this).parents('.list-group-item').find('.edit-type-select option:selected').text();
-    console.log(legacyType);
 
     // Hides or Shows based on legacy question type
     var renderInputs = function(questionType) {
@@ -88,7 +86,6 @@ $(document).ready(function() {
         $(this).parents('.list-group-item').find('.edit-type-select option:selected').each(function() {
           selectedType += $(this).text();
         });
-        console.log(selectedType);
         renderInputs(selectedType);
       });
 
@@ -151,6 +148,16 @@ $(document).ready(function() {
     }).fail(function() {
       console.log("error DELETING question");
     });
+  });
+
+  // TAKE SURVEY ////////////////////////////////////////////////////////////////////////////
+  $('#survey-questions').children('.view-survey-question').hide();
+  $('#survey-questions .view-survey-question:first-child').show();
+
+  $('.next-question, .submit-survey-guest').on('click', function(e) {
+    e.preventDefault();
+    $(this).parents('.list-group-item').remove();
+    $('#survey-questions .view-survey-question:first-child').show();
   });
 
 

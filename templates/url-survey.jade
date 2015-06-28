@@ -4,17 +4,24 @@ block content
   .container
     .row
       .col-sm-12
+        h1 #{survey.title}
+        h4 #{survey.description}
         .list-group#survey-questions
-          h1 #{survey.title}
-          for question in survey.questions
-            article(class="list-group-item")
-              h4 #{question.title}
-              h5 #{question.helpText}
-                if question.type == "Scale"
-                    include take-scale
-                if question.type == "Text"
-                    include take-text
-                if question.type == "Multiple Choice"
-                  for choice in question.choices
-                    include take-multiple-choice
-          a.btn.btn-primary(href="/surveys/guest/thankyou") Submit Survey
+          if (survey.questions.length > 0 )
+            for question in survey.questions
+              article(class="list-group-item view-survey-question")
+                h4 #{question.title}
+                h5 #{question.helpText}
+                  if question.type == "Scale"
+                      include take-scale
+                  if question.type == "Text"
+                      include take-text
+                  if question.type == "Multiple Choice"
+                    for choice in question.choices
+                      include take-multiple-choice
+                if (survey.questions.indexOf(question) == survey.questions.length - 1)
+                  a.btn.btn-primary(href="", class="submit-survey-guest") Submit Survey
+                else
+                  a.btn.btn-primary(href="", class="next-question") Next
+            article(class="list-group-item view-survey-question")
+              include thank-you

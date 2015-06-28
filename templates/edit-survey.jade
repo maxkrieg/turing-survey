@@ -4,7 +4,7 @@ block content
   .container
     .row
       .col-sm-12
-        h2(id="#{survey.id}") #{survey.title}
+        h2(id="#{survey.id}") Edit: #{survey.title}
         .form-group
           label(for="surveytitle") Survey Title
           input#survey-title.form-control(name="survey-title", type="text", value=survey.title)
