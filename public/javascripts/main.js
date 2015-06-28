@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-  // Hide the edit-question form by default
-  $('.edit-question-form').hide();
+  // DASHBOARD VIEW ////////////////////////////////////////////////////////////////////////////
 
   // Delete a survey
   $('.delete-survey').on('click', function(e) {
@@ -20,6 +19,37 @@ $(document).ready(function() {
     });
 
   });
+  // EDIT SURVEY VIEW ////////////////////////////////////////////////////////////////////////////
+
+  $('.edit-survey-submit').on('click', function(e) {
+    e.preventDefault();
+    var title = $('#survey-title').val();
+    var description = $('#survey-description').val();
+    var surveyId = $('h2').attr('id');
+    var url = '/surveys/' + surveyId;
+
+    var survey = {
+      title: title,
+      description: description
+    };
+
+    $.ajax({
+      method: 'PUT',
+      url: url,
+      data: JSON.stringify(survey),
+      contentType: "application/json; charset=utf-8"
+    }).done(function() {
+      console.log("success updating survey");
+    }).fail(function() {
+      console.log("error updating survey");
+    });
+
+  });
+
+  // EDIT QUESTION ////////////////////////////////////////////////////////////////////////////
+
+  // Hide the edit-question form by default
+  $('.edit-question-form').hide();
 
   // Toggle hide and show of edit-question form
   $('.edit-question').on('click', function(e) {
@@ -66,7 +96,6 @@ $(document).ready(function() {
 
   // PUT changes to question
   // remember to include the _id when sending back the JSON object
-
   $('.edit-question-save').on('click', function() {
     var surveyId = $('h2').attr('id');
     var questionId = $(this).attr('data-question-id');
@@ -106,7 +135,6 @@ $(document).ready(function() {
     $('.edit-question-form').hide();
   });
 
-
   // Delete a Question from Survey
   $('.delete-question').on('click', function(e) {
     e.preventDefault();
@@ -123,7 +151,6 @@ $(document).ready(function() {
     }).fail(function() {
       console.log("error DELETING question");
     });
-
   });
 
 
