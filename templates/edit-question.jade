@@ -1,10 +1,10 @@
 .edit-question-form(data-question="#{question.id}")
   .form-group
     label(for="title") Title
-    input(name="title" value=question.title)
+    input(name="title", id="edit-question-title", value=question.title)
   .form-group
     label(for="helpText") Help Text
-    input(name="helpText" value=question.helpText)
+    input(name="helpText", id="edit-question-helptext" value=question.helpText)
   .form-group
     label(for="type") Question Type:
       select.edit-type-select.form-control
@@ -25,11 +25,13 @@
       p Guest will have five options to choose from.  Customize those options by changing the fields below:
       for choice in question.choices
         .input-group.input-group-sm
-          input.form-control(type="text", class="form-control", value=choice)
+          input.form-control(type="text", class="multiple-choice-option", value=choice)
     include scale
     include text
   else
     include multiple-choice
     include scale
     include text
-  button.btn.btn-primary.btn-sm(type="submit") Update Question
+  div.btn-group.btn-group-sm(role="group")
+    button.btn.btn-primary.btn-sm.edit-question-save(type="submit", data-question-id="#{question.id}") Save
+    button.btn.btn-primary.btn-sm.edit-question-cancel(type="cancel") Cancel

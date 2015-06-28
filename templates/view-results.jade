@@ -4,6 +4,8 @@ block content
   .container
     .row
       .col-sm-12
+        h3 #{survey.title}
+        h4 #{survey.description}
         .list-group#survey-questions
           for question in survey.questions
             article(class="list-group-item")

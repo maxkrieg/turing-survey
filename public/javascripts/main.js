@@ -26,7 +26,7 @@ $(document).ready(function() {
     e.preventDefault();
     $('.edit-question-form').hide();
     var questionId = $(this).attr('data-id');
-    $('[data-question="' + questionId + '"]').toggle();
+    $('[data-question="' + questionId + '"]').show();
     console.log($(this));
 
     var legacyType = $(this).parents('.list-group-item').find('.edit-type-select option:selected').text();
@@ -67,7 +67,44 @@ $(document).ready(function() {
   // PUT changes to question
   // remember to include the _id when sending back the JSON object
 
+  $('.edit-question-save').on('click', function() {
+    var surveyId = $('h2').attr('id');
+    var questionId = $(this).attr('data-question-id');
+    var title = $(this).parents('.list-group-item').find('#edit-question-title').val();
+    var helpText = $(this).parents('.list-group-item').find('#edit-question-helptext').val();
+    var type = $(this).parents('.list-group-item').find('.edit-type-select option:selected').text();
+    var choices = [];
+    if (type === "Multiple Choice") {
+      $(this).parents('.list-group-item').find('.multiple-choice-option').each(function(index) {
+        choices.push($(this).val());
+      });
+    }
+    var responses = [];
+    var url = '/surveys/' + surveyId + '/questions/' + questionId;
+    var question = {
+      _id: questionId,
+      title: title,
+      helpText: helpText,
+      type: type,
+      choices: choices,
+      responses: responses
+    };
 
+    $.ajax({
+      method: 'PUT',
+      url: url,
+      data: JSON.stringify(question),
+      contentType: "application/json; charset=utf-8"
+    }).done(function() {
+      console.log("success updating question");
+    }).fail(function() {
+      console.log("error updating question");
+    });
+  });
+
+  $('.edit-question-cancel').on('click', function() {
+    $('.edit-question-form').hide();
+  });
 
 
   // Delete a Question from Survey

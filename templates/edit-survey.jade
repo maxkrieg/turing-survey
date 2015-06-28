@@ -12,6 +12,7 @@ block content
           label(for="surveydescription") Survey Description
           input#survey-description.form-control(name="description", type="text", value=survey.description)
         h3 Questions
+        h5 <strong>Note: <em>altering a question will clear all previously recorded guest responses from Database.</em></strong>
         .list-group#survey-questions
           for question in survey.questions
             article(class="list-group-item")
@@ -21,6 +22,6 @@ block content
                 button(class="btn btn-default edit-question", data-id="#{question.id}") Edit
                 button(class="btn btn btn-default delete-question", data-id="#{question.id}") Delete
               include edit-question
-      a.btn.btn-primary(type="submit", href="/surveys") Update Survey
+      a.btn.btn-primary(type="submit", href="/surveys") Done
 
 
