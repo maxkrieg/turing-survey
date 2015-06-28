@@ -10,10 +10,11 @@ block content
             article(class="list-group-item")
               h4 #{question.title}
               h5 #{question.helpText}
-                //- form(role="form", method="post", action="/surveys/#{survey.id}/questions/#{question.id}", class="form-control form-group")
-                for choice in question.choices
-                  if question.type == "Multiple Choice"
+                if question.type == "Scale"
+                    include take-scale
+                if question.type == "Text"
+                    include take-text
+                if question.type == "Multiple Choice"
+                  for choice in question.choices
                     include take-multiple-choice
-                  if question.type == "Scale"
-
-                  if question.type == "Text"
+          a.btn.btn-primary(href="/surveys/guest/thankyou") Submit Survey

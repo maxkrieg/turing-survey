@@ -56,6 +56,10 @@ appRouter.get('/:id/guest', function(req, res) {
   });
 });
 
+appRouter.get('/guest/thankyou', function(req, res) {
+  res.render('thank-you');
+});
+
 // View specific Survey as User: edit-survey.jade
 appRouter.get('/:id', function(req, res) {
   Survey.findOne({
