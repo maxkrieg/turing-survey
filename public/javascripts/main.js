@@ -64,20 +64,8 @@ $(document).ready(function() {
 
   });
 
-  // $(".edit-type-select")
-  //   .change(function() {
-  //     var selectedType = "";
-  //     $(".edit-type-select option:selected").each(function() {
-  //       selectedType += $(this).text() + " ";
-  //     });
-  //     console.log(selectedType);
-  //     if (selectedType === "Multiple Choice") {
-  //       $('.multiple-choice').show();
-  //       $('.scale').hide();
-  //       $('.text').hide();
-  //     }
-  //   })
-  //   .change();
+  // PUT changes to question
+  // remember to include the _id when sending back the JSON object
 
 
 
