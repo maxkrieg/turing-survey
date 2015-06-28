@@ -7,7 +7,7 @@
     input(name="helpText" value=question.helpText)
   .form-group
     label(for="type") Question Type:
-      select.form-control
+      select.edit-type-select.form-control
         if question.type == "Scale"
           option Scale
           option Multiple Choice
@@ -21,9 +21,11 @@
           option Scale
           option Multiple Choice
   if question.type == 'Multiple Choice'
-    for choice in question.choices
-      .input-group.input-group-sm
-        input.form-control(type="text", class="form-control", value=choice)
+    .multiple-choice
+      p Guest will have five options to choose from.  Customize those options by changing the fields below:
+      for choice in question.choices
+        .input-group.input-group-sm
+          input.form-control(type="text", class="form-control", value=choice)
     include scale
     include text
   else
