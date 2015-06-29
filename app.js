@@ -38,6 +38,7 @@ var User = require('./lib/user.js');
 var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
 var homeRoutes = require('./routes/index');
+var loginRoutes = require('./routes/auth');
 
 // STYLUS AND NIB CONFIG
 // creates compile func, calls stylus & nib middlewear in stack
@@ -57,6 +58,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/surveys', appRoutes);
 app.use('/api/surveys', apiRoutes);
 app.use('/', homeRoutes);
+app.use('/login', loginRoutes);
 
 
 
