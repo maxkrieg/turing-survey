@@ -24,9 +24,14 @@ app.set('views', './templates');
 var stylus = require('stylus');
 var nib = require('nib');
 
+//PASSPORT
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 // IMPORT SCHEMA
 var Question = require('./lib/question.js');
 var Survey = require('./lib/surveys.js');
+var User = require('./lib/user.js');
 
 
 // IMPORT ROUTES
