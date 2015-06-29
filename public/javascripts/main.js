@@ -47,6 +47,22 @@ $(document).ready(function() {
   });
 
   // EDIT QUESTION ////////////////////////////////////////////////////////////////////////////
+  // Hides or Shows based on legacy question type
+  var renderInputs = function(questionType) {
+    if (questionType === "Multiple Choice") {
+      $('.scale').hide();
+      $('.text').hide();
+      $('.multiple-choice').show();
+    } else if (questionType === "Scale") {
+      $('.multiple-choice').hide();
+      $('.text').hide();
+      $('.scale').show();
+    } else if (questionType === "Text") {
+      $('.multiple-choice').hide();
+      $('.scale').hide();
+      $('.text').show();
+    }
+  };
 
   // Hide the edit-question form by default
   $('.edit-question-form').hide();
@@ -60,22 +76,6 @@ $(document).ready(function() {
 
     var legacyType = $(this).parents('.list-group-item').find('.edit-type-select option:selected').text();
 
-    // Hides or Shows based on legacy question type
-    var renderInputs = function(questionType) {
-      if (questionType === "Multiple Choice") {
-        $('.scale').hide();
-        $('.text').hide();
-        $('.multiple-choice').show();
-      } else if (questionType === "Scale") {
-        $('.multiple-choice').hide();
-        $('.text').hide();
-        $('.scale').show();
-      } else if (questionType === "Text") {
-        $('.multiple-choice').hide();
-        $('.scale').hide();
-        $('.text').show();
-      }
-    };
     renderInputs(legacyType);
 
     // Hides or shows based on newly selected question type
@@ -88,7 +88,6 @@ $(document).ready(function() {
         });
         renderInputs(selectedType);
       });
-
   });
 
   // PUT changes to question
@@ -149,6 +148,26 @@ $(document).ready(function() {
       console.log("error DELETING question");
     });
   });
+
+  // CREATE SURVEY /////////////////////////////////////////////////////////////////////////////
+  $('#new-survey-questions, .create-survey-done').hide();
+  $('.edit-survey-submit').on('click', function(e) {
+    e.preventDefault();
+    $('.create-new-survey').remove();
+    $('#new-survey-questions, .create-survey-done').show();
+  });
+
+  // Hides or shows based on newly selected question type
+  $('.choose-type-select')
+    .change(function() {
+      var selectedType = "";
+      $('.choose-type-select option:selected').each(function() {
+        selectedType += $(this).text();
+      });
+      renderInputs(selectedType);
+    }).change();
+
+
 
   // TAKE SURVEY ////////////////////////////////////////////////////////////////////////////
   $('#survey-questions').children('.view-survey-question').hide();

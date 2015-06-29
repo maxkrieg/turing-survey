@@ -1,15 +1,20 @@
+article(class="list-group-item")
+  input(type="text", placeholder="Question Title")
+  input(type="text", placeholder="Question Help Text")
+  .form-group
+    label(for="type") Question Type:
+      select.choose-type-select.form-control
+        option Scale
+        option Multiple Choice
+        option Text
 
-input(type="text", placeholder="Question Title")
-input(type="text", placeholder="Question Help Text")
-.btn-group.btn-group-md.btn-group(role="group", aria-label="...")
-  input.btn.btn-default(type="button", value="Multiple Choice")
-  input.btn.btn-default(type="button", value="Text")
-  input.btn.btn-default(type="button", value="Scale")
+  include multiple-choice
+  include scale
+  include text
 
-include multiple-choice
-include scale
-
-input.btn.btn-default(type="button", value="Add Question")
+  div.btn-group.btn-group-sm(role="group")
+    a.btn.btn-primary.btn-sm.edit-question-save(type="submit") Save
+    a.btn.btn-primary.btn-sm.edit-question-cancel(type="cancel", href="/surveys") Cancel
 
 
 
