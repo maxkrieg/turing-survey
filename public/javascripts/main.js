@@ -19,6 +19,25 @@ $(document).ready(function() {
     });
 
   });
+
+  // CREATE QUESTION ////////////////////////////////////////////////////////////////////////////
+  $('#create-question-submit').on('click', function(e){
+      e.preventDefault();
+      var question = {
+        title: $('input[name="title"]').val(),
+        helpText: $('input[name="help-text"]').val()
+      };
+      $.ajax({
+        method: 'POST',
+        url: '/create',
+        data: JSON.stringify(question),
+        contentType: "application/json; charset=utf-8"
+      }).done(function(response){
+        $('.questions').append(response);
+      })
+    });
+
+
   // EDIT SURVEY VIEW ////////////////////////////////////////////////////////////////////////////
 
   $('.edit-survey-submit').on('click', function(e) {
