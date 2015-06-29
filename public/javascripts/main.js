@@ -239,6 +239,11 @@ $(document).ready(function() {
   $('#survey-questions').children('.view-survey-question').hide();
   $('#survey-questions, .view-survey-question:first-child').show();
 
+  $('.radio-button').on('click', function() {
+    $('.radio-button').removeClass('selected-radio');
+    $(this).addClass('selected-radio');
+  });
+
   $('.next-question, .submit-survey-guest').on('click', function(e) {
     e.preventDefault();
     var questionType = $('#take-question-title').attr('data-type');
@@ -246,7 +251,7 @@ $(document).ready(function() {
     var response = '';
 
     if (questionType === 'Multiple Choice') {
-      response = 'multiple choice response';
+      response = $('.selected-radio').val();
     } else if (questionType === 'Scale') {
       response = $(this).parents('.list-group-item').find('.scale-response option:selected').text();
     } else if (questionType === 'Text') {
@@ -278,6 +283,8 @@ $(document).ready(function() {
 
 
   });
+
+  $('.radio-button')
 
 
 

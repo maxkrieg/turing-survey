@@ -5,9 +5,6 @@ block content
   .container
     .row
       .col-sm-12
-        div.radio
-          input(type="radio", name="optionsRadios", id="optionsRadios1")
-          | Test Radio Button
         h1(data-survey-id="#{survey.id}", id="take-survey-title") #{survey.title}
         h4 #{survey.description}
         .list-group#survey-questions
@@ -16,13 +13,13 @@ block content
               article(class="list-group-item view-survey-question")
                 h4(data-type="#{question.type}", id="take-question-title", data-question-id="#{question.id}") #{question.title}
                 h5 <strong><em>#{question.helpText}</em></strong>
-                  if question.type == "Scale"
-                      include take-scale
-                  if question.type == "Text"
-                      include take-text
-                  if question.type == "Multiple Choice"
-                    for choice in question.choices
-                      include take-multiple-choice
+                if question.type == "Scale"
+                  include take-scale
+                if question.type == "Text"
+                  include take-text
+                if question.type == "Multiple Choice"
+                  for choice in question.choices
+                    include take-multiple-choice
                 if (survey.questions.indexOf(question) == survey.questions.length - 1)
                   a.btn.btn-primary(href="", class="submit-survey-guest") Submit Survey
                 else
