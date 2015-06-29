@@ -6,11 +6,11 @@ block content
       .col-sm-12
         .create-new-survey
           h2 Create New Survey
-          input.form-control(type="text", placeholder="Survey Title")
+          input.form-control(type="text", placeholder="Survey Title", id="new-survey-title")
           .form-group
-            label(for="comment") Survey Description
-            textarea#comment.form-control(rows="3")
-          a.btn.btn-primary(type="submit", class="edit-survey-submit", href="/surveys") Submit
+            label(for="description") Survey Description
+            textarea#new-survey-description.form-control(rows="3")
+          a.btn.btn-primary(type="submit", class="create-survey-submit", href="/surveys") Submit
         .list-group#new-survey-questions
           h2 Add Questions to Your Survey
           include questionform

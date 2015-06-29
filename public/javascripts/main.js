@@ -92,7 +92,8 @@ $(document).ready(function() {
 
   // PUT changes to question
   // remember to include the _id when sending back the JSON object
-  $('.edit-question-save').on('click', function() {
+  $('.edit-question-save').on('click', function(e) {
+    e.preventDefault();
     var surveyId = $('h2').attr('id');
     var questionId = $(this).attr('data-question-id');
     var title = $(this).parents('.list-group-item').find('#edit-question-title').val();
@@ -125,6 +126,8 @@ $(document).ready(function() {
     }).fail(function() {
       console.log("error updating question");
     });
+
+    $('.edit-question-form').hide();
   });
 
   $('.edit-question-cancel').on('click', function() {
@@ -150,11 +153,16 @@ $(document).ready(function() {
   });
 
   // CREATE SURVEY /////////////////////////////////////////////////////////////////////////////
+
   $('#new-survey-questions, .create-survey-done').hide();
-  $('.edit-survey-submit').on('click', function(e) {
+  $('.create-survey-submit').on('click', function(e) {
     e.preventDefault();
+
+    // AJAX to POST new survey to database
+
     $('.create-new-survey').remove();
     $('#new-survey-questions, .create-survey-done').show();
+
   });
 
   // Hides or shows based on newly selected question type
@@ -166,6 +174,12 @@ $(document).ready(function() {
       });
       renderInputs(selectedType);
     }).change();
+
+  $('.new-question-save').on('click', function() {
+    // Grab values
+    // send POST request
+    // append question in .done
+  });
 
 
 
@@ -199,13 +213,8 @@ $(document).ready(function() {
     //   console.log('error POSTing question response');
     // });
 
-
-
     $(this).parents('.list-group-item').remove();
     $('#survey-questions .view-survey-question:first-child').show();
-
-
-
 
   });
 
