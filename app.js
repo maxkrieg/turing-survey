@@ -25,8 +25,9 @@ var stylus = require('stylus');
 var nib = require('nib');
 
 // IMPORT SCHEMA
-var Survey = require('./lib/surveys.js');
 var Question = require('./lib/question.js');
+var Survey = require('./lib/surveys.js');
+
 
 // IMPORT ROUTES
 var appRoutes = require('./routes/app-routes');

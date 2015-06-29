@@ -130,40 +130,23 @@ apiRouter.put('/:id/questions/:question_id', function(req, res) {
 // Insert Response in Question response array
 apiRouter.put('/:id/questions/:question_id/response', jsonParser);
 apiRouter.put('/:id/questions/:question_id/response', function(req, res) {
-  Survey.update({
-    _id: req.params.id,
-    'questions._id': req.params.question_id
-  }, {
-    $push: {
-      'responses.$': req.body
-    }
-  }, function(err, answer) {
-    if (err) {
-      console.log(answer);
-      console.log(err);
-      res.sendStatus(400);
-    }
-    console.log('inserted answer');
-    console.log(answer);
-    res.sendStatus(200);
-  });
-});
-
-
-// TEST: Get Question
-apiRouter.put('/:id', function(req, res) {
-  Question.findOne({
+  Survey.findOne({
     _id: req.params.id
+  }, {
+    questions: {
+      $elemMatch: {
+        _id: req.params.question_id
+      }
+    }
   }, function(err, question) {
     if (err) {
       console.log(err);
       res.sendStatus(404);
     }
-    res.json(question);
+    question.responses.push(req.body);
+    res.sendStatus(200);
   });
 });
-
-
 
 apiRouter.delete('/:id/questions/:question_id', function(req, res) {
   Survey.update({

@@ -1,7 +1,14 @@
-h4 #{title}
-h3 #{helpText}
-  ul
-    each choice in [1, 2, 3, 4, 5]
-      li.radio= choice
-        label
-          input(type="radio", name="optradio")
+article(class="list-group-item")
+  h4 #{title}
+  h4 #{helpText}
+  h5 #{type}
+  //- // checking to see if we have email addresses
+  if (type === "Multiple Choice")
+    ul
+      for choice in choices
+        li #{choice}
+  if (type === "Text")
+    include text
+  if (type === "Scale")
+    include scale
+
