@@ -35,10 +35,11 @@ var User = require('./lib/user.js');
 
 
 // IMPORT ROUTES
+var authRoutes = require('./routes/auth');
 var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
-var homeRoutes = require('./routes/index');
-var authRoutes = require('./routes/auth');
+// var homeRoutes = require('./routes/index');
+
 
 // STYLUS AND NIB CONFIG
 // creates compile func, calls stylus & nib middlewear in stack
@@ -55,10 +56,11 @@ app.use(stylus.middleware({
 app.use(express.static(__dirname + '/public'));
 
 // ROUTE MOUNTING
+app.use('/', authRoutes);
 app.use('/surveys', appRoutes);
 app.use('/api/surveys', apiRoutes);
-app.use('/', homeRoutes);
-app.use('/auth', authRoutes);
+// app.use('/', homeRoutes);
+
 
 // SERVER /////////////////////////////////////////////////////////
 
