@@ -48,6 +48,11 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   margin-top: 2em;
+  background-color: #2fa1f2;
+  padding-left: 4em;
+  padding-right: 4em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 .loginsection {
   width: 27em;
@@ -172,12 +177,6 @@ button.btn.btn.btn-default.delete-question {
   color: #fff;
 }
 div#survey-questions {
-  margin-right: 34em;
-}
-.form-group {
-  background-color: #fff;
-  padding: 1em;
-  border-radius: 1em;
   margin-right: 34em;
 }
 h2 {
