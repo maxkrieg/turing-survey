@@ -58,10 +58,6 @@ app.use(express.static(__dirname + '/public'));
 app.use('/surveys', appRoutes);
 app.use('/api/surveys', apiRoutes);
 app.use('/', homeRoutes);
-app.use('/login', loginRoutes);
-
-
-
 
 // SERVER /////////////////////////////////////////////////////////
 
