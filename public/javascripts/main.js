@@ -192,9 +192,10 @@ $(document).ready(function() {
       url: url,
       data: JSON.stringify(newSurvey),
       contentType: "application/json; charset=utf-8"
-    }).done(function() {
+    }).done(function(response) {
       console.log('success creating survey');
       $('.create-new-survey').remove();
+      $('.new-questions-list').append(response);
       $('#new-survey-questions, .create-survey-done').show();
     }).fail(function() {
       console.log('error POSTing survey');
@@ -249,48 +250,22 @@ $(document).ready(function() {
 
 
   // TAKE SURVEY ////////////////////////////////////////////////////////////////////////////
-  $('
-          # survey - questions ').children('.view - survey - question ').hide();
-  $('
-          # survey - questions.view - survey - question: first - child ').show();
+  $('#survey-questions').children('.view- survey - question ').hide();
+  $('#survey-questions, .view-survey-question:first-child').show();
 
-  $('.next - question,
-          .submit - survey - guest ').on('
-          click ', function(e) {
+  $('.next - question, .submit-survey-guest').on('click', function(e) {
     e.preventDefault();
-    var questionType = $('
-          # question - title ').attr('
-          data - type ');
-    console.log('
-          submitted type: ' + questionType);
-    var response = '
-          ';
+    var questionType = $('#question-title').attr('data-type');
+    console.log('submitted type:' + questionType);
+    var response = '';
 
-    if (questionType === '
-          Multiple Choice ') {
+    if (questionType === 'Multiple Choice') {
       // response = value of radio button
-    } else if (questionType === '
-          Scale ') {
+    } else if (questionType === 'Scale') {
       response = $(this).parents('.list - group - item ').find('.scale - response option: selected ').text();
-    } else if (questionType === '
-          Text ') {
-      response = $('
-          # text - response ').val();
+    } else if (questionType === 'Text') {
+      response = $('#text-response').val();
     }
-
-    // $.ajax({
-    //   method: '
-    POST ',
-    //   url: '
-    http: //localhost:3000/contacts',
-    //   data: JSON.stringify(contact),
-    //   contentType: "application/json; charset=utf-8"
-    // }).done(function(response) {
-    //   console.log('success POSTing question response');
-    //   $('.contacts').append(response);
-    // }).fail(function() {
-    //   console.log('error POSTing question response');
-    // });
 
     $(this).parents('.list-group-item').remove();
     $('#survey-questions .view-survey-question:first-child').show();
