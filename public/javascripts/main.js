@@ -156,8 +156,38 @@ $(document).ready(function() {
 
   $('.next-question, .submit-survey-guest').on('click', function(e) {
     e.preventDefault();
+    var questionType = $('#question-title').attr('data-type');
+    console.log('submitted type: ' + questionType);
+    var response = '';
+
+    if (questionType === 'Multiple Choice') {
+      // response = value of radio button
+    } else if (questionType === 'Scale') {
+      response = $(this).parents('.list-group-item').find('.scale-response option:selected').text();
+    } else if (questionType === 'Text') {
+      response = $('#text-response').val();
+    }
+
+    $.ajax({
+      method: 'POST',
+      url: 'http://localhost:3000/contacts',
+      data: JSON.stringify(contact),
+      contentType: "application/json; charset=utf-8"
+    }).done(function(response) {
+      console.log('success POSTing question response');
+      $('.contacts').append(response);
+    }).fail(function() {
+      console.log('error POSTing question response');
+    });
+
+
+
     $(this).parents('.list-group-item').remove();
     $('#survey-questions .view-survey-question:first-child').show();
+
+
+
+
   });
 
 

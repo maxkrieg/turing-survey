@@ -195,6 +195,26 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
   });
 });
 
+// Insert Response in Question response array
+appRouter.put('/:id/questions/:question_id/response', jsonParser);
+appRouter.put('/:id/questions/:question_id/response', function(req, res) {
+  Survey.update({
+    _id: req.params.id,
+    'questions._id': req.params.question_id
+  }, {
+    $push: {
+      responses: req.body
+    }
+  }, function(err, question) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+    console.log('updated question');
+    res.sendStatus(200);
+  });
+});
+
 // Delete specific question
 appRouter.delete('/:id/questions/:question_id', function(req, res) {
   Survey.update({

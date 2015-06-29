@@ -1,16 +1,20 @@
 extend layout
 block content
   include navbar-home
+
   .container
     .row
       .col-sm-12
+        div.radio
+          input(type="radio", name="optionsRadios", id="optionsRadios1")
+          | Test Radio Button
         h1 #{survey.title}
         h4 #{survey.description}
         .list-group#survey-questions
           if (survey.questions.length > 0 )
             for question in survey.questions
               article(class="list-group-item view-survey-question")
-                h4 #{question.title}
+                h4(data-type="#{question.type}", id="question-title") #{question.title}
                 h5 #{question.helpText}
                   if question.type == "Scale"
                       include take-scale
