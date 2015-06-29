@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var appRouter = express.Router();
 var Survey = require('../lib/surveys.js');
+var Question = require('../lib/question.js');
 var util = require('util');
 //////////////////////////////////////////
 
@@ -196,7 +197,7 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
 });
 
 // Insert Response in Question response array
-appRouter.put('/:id/questions/:question_id/response', jsonParser);
+appRouter.get('/:id/questions/:question_id/response', jsonParser);
 appRouter.put('/:id/questions/:question_id/response', function(req, res) {
   Survey.update({
     _id: req.params.id,

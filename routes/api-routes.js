@@ -2,7 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var apiRouter = express.Router();
+var Question = require('../lib/question.js');
 var Survey = require('../lib/surveys.js');
+
 //////////////////////////////////////////
 
 // SURVEY ROUTES
@@ -146,6 +148,21 @@ apiRouter.put('/:id/questions/:question_id/response', function(req, res) {
     res.sendStatus(200);
   });
 });
+
+
+// TEST: Get Question
+apiRouter.put('/:id', function(req, res) {
+  Question.findOne({
+    _id: req.params.id
+  }, function(err, question) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    }
+    res.json(question);
+  });
+});
+
 
 
 apiRouter.delete('/:id/questions/:question_id', function(req, res) {

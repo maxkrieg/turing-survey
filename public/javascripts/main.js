@@ -168,17 +168,17 @@ $(document).ready(function() {
       response = $('#text-response').val();
     }
 
-    $.ajax({
-      method: 'POST',
-      url: 'http://localhost:3000/contacts',
-      data: JSON.stringify(contact),
-      contentType: "application/json; charset=utf-8"
-    }).done(function(response) {
-      console.log('success POSTing question response');
-      $('.contacts').append(response);
-    }).fail(function() {
-      console.log('error POSTing question response');
-    });
+    // $.ajax({
+    //   method: 'POST',
+    //   url: 'http://localhost:3000/contacts',
+    //   data: JSON.stringify(contact),
+    //   contentType: "application/json; charset=utf-8"
+    // }).done(function(response) {
+    //   console.log('success POSTing question response');
+    //   $('.contacts').append(response);
+    // }).fail(function() {
+    //   console.log('error POSTing question response');
+    // });
 
 
 

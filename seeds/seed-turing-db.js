@@ -1,7 +1,7 @@
 var async = require('async');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/turingdb');
-
+var Question = require('../lib/question.js');
 var Survey = require('../lib/surveys.js');
 
 var removeSurveys = function(done) {
