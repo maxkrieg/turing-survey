@@ -1,10 +1,10 @@
 article(class="list-group-item")
-  h4 This is where added questions will be displayed
-  h4 #{title}
-  h4 #{helpText}
-  h5 #{type}
+  h4 <strong>Title:</strong> #{title}
+  h5 <strong>Help Text:</strong> <em>#{helpText}</em>
+  h5 <strong>Type:</strong> #{type}
   //- // checking to see if we have email addresses
   if (type === "Multiple Choice")
+    p <strong>Choices:</strong>
     ul
       for choice in choices
         li #{choice}

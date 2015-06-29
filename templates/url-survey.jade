@@ -15,7 +15,7 @@ block content
             for question in survey.questions
               article(class="list-group-item view-survey-question")
                 h4(data-type="#{question.type}", id="question-title") #{question.title}
-                h5 #{question.helpText}
+                h5 <strong><em>#{question.helpText}</em></strong>
                   if question.type == "Scale"
                       include take-scale
                   if question.type == "Text"
