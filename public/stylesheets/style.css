@@ -20,10 +20,9 @@ body {
   color: #5956ae;
 }
 .col-sm-12 {
-  background-color: #cbdee0;
   color: #3f77c2;
-  border-radius: 50px;
-  padding: 2em;
+  border-radius: 43px;
+  padding: 3em;
 }
 .navbar-default .navbar-brand {
   color: #67b25f;
@@ -140,6 +139,78 @@ h4#question-title {
 }
 section.list-group-item {
   margin-top: 1em;
+  font-family: 'Roboto', sans-serif;
+}
+.footer {
+  background-color: #454c4b;
+  width: 100%;
+  height: 10em;
+  margin-top: 18em;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #64c864;
+  font-family: 'Roboto', sans-serif;
+}
+input.form-control {
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #4570be;
+  font-family: 'Roboto', sans-serif;
+}
+button.btn.btn-default.edit-question {
+  background-color: #3574c8;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+button.btn.btn.btn-default.delete-question {
+  background-color: #b4d084;
+  color: #fff;
+}
+div#survey-questions {
+  margin-right: 34em;
+}
+.form-group {
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 1em;
+  margin-right: 34em;
+}
+h2 {
+  border-style: solid;
+  border-color: #fff;
+  padding: 5px;
+  margin-right: 16em;
+  border-width: 1px;
+  padding-left: 0em;
+  padding-left: 17px;
+}
+h3 {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
+  padding: 5px;
+  margin-right: 20em;
+}
+section.list-group-item {
+  margin-right: 33em;
+}
+.h4,
+h4 {
+  font-size: 18px;
+  color: #4cb34c;
+}
+select.form-control.scale-response {
+  margin-top: 1em;
+}
+a.btn.btn-primary.edit-survey-submit {
+  margin-left: 3em;
+  padding-left: 8em;
+  padding-right: 8em;
 }
 a.btn.btn-default {
   background-color: #f4d2a5;
@@ -147,16 +218,19 @@ a.btn.btn-default {
   margin: 10px;
   padding: 9px;
   margin-top: 3em;
+  font-family: 'Roboto', sans-serif;
 }
-h2 {
-  border-style: solid;
+.h1,
+h1 {
+  font-size: 25px;
+}
+.create-new-survey {
+  color: #4da1db;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
   padding: 1em;
-  padding-left: 15em;
-  border-color: #f0ffff;
+  margin-right: 15em;
 }
-.footer {
-  background-color: #454c4b;
-  width: 100%;
-  height: 10em;
-  margin-top: 18em;
+.list-group.new-questions-list {
+  width: 92%;
 }
