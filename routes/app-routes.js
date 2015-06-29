@@ -14,7 +14,7 @@ var path = require('path');
 
 //Custom middleware for User Auth
 appRouter.use(function(req, res, next) {
-  if(!req.user) {
+  if (!req.user) {
     res.redirect('/');
   }
   next();
