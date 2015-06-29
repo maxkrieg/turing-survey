@@ -6,7 +6,26 @@ var Survey = require('../lib/surveys.js');
 var Question = require('../lib/question.js');
 var util = require('util');
 var fs = require('fs');
-//////////////////////////////////////////
+var jade = require('jade');
+var stylus = require('stylus');
+var nib = require('nib');
+var path = require('path');
+
+// STYLUS AND NIB CONFIG
+// creates compile func, calls stylus & nib middlewear in stack
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .use(nib());
+}
+// // set up express to use stylus middlewear and pass in compile function as object
+// appRouter.use(stylus.middleware({
+//   src: __dirname + '/public',
+//   compile: compile
+// }));
+// appRouter.use(express.static(__dirname + '/public'));
+
+//////////////////////////////////////////////////////////////////////////////
 
 // SURVEY ROUTES
 
@@ -90,12 +109,15 @@ appRouter.post('/', function(req, res) {
       fs.readFile('./templates/questionform.jade', 'utf8', function(err, data) {
         if (err) {
           res.sendStatus(400);
+        } else {
+          var surveyCompiler = jade.compile(data, {
+            filename: path.join(__dirname, '../templates/questionform.jade'),
+            pretty: true
+          });
+          var html = surveyCompiler(survey);
+          // This sends the filled in question template back to client
+          res.send(html);
         }
-        var surveyCompiler = jade.compile(data);
-        var html = surveyCompiler(survey);
-        // This sends the filled in question template back to client
-        res.send(html);
-        res.status(201);
       });
     }
   });
@@ -166,12 +188,16 @@ appRouter.post('/:id/questions/', function(req, res) {
       fs.readFile('./templates/question.jade', 'utf8', function(err, data) {
         if (err) {
           res.sendStatus(400);
+        } else {
+          var questionCompiler = jade.compile(data, {
+            filename: path.join(__dirname, '../templates/question.jade'),
+            pretty: true
+          });
+          var html = questionCompiler(req.body);
+          // This sends the filled in question template back to client
+          res.send(html);
+          res.status(201);
         }
-        var questionCompiler = jade.compile(data);
-        var html = questionCompiler(question);
-        // This sends the filled in question template back to client
-        res.send(html);
-        res.status(201);
       });
     }
   });
@@ -236,6 +262,9 @@ appRouter.delete('/:id/questions/:question_id', function(req, res) {
     res.sendStatus(204);
   });
 });
+
+
+
 
 
 
