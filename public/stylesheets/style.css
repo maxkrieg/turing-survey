@@ -1,6 +1,6 @@
 body {
   padding-top: 70px;
-  background-color: #e7f1f4;
+  background-color: #e7e4e4;
 }
 .banner {
   margin: 0 auto;
@@ -18,15 +18,6 @@ body {
 }
 .navbar-default .navbar-nav>li>a {
   color: #5956ae;
-}
-.secondbanner {
-  margin: 0 auto;
-  display: table;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  margin-top: 3em;
-  color: #6cb56c;
-  margin-bottom: 4em;
 }
 .col-sm-12 {
   background-color: #d5e0dc;
@@ -57,18 +48,84 @@ body {
   border-radius: 4px;
   margin-top: 2em;
 }
+.loginsection {
+  width: 27em;
+  text-align: center;
+  color: #58c358;
+  float: left;
+  padding-top: 6em;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  padding-bottom: 6em;
+  font-family: 'Roboto', sans-serif;
+  width: 307px;
+  height: 306px;
+  background: #f2eeee;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 217px;
+  margin-left: 5em;
+}
+.customersection {
+  float: left;
+  width: 30em;
+  color: #808080;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  padding-top: 6em;
+  padding-bottom: 6em;
+  font-family: 'Roboto', sans-serif;
+  width: 307px;
+  height: 306px;
+  background: #f2eeee;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 217px;
+  margin-left: 5em;
+}
+.sharesection {
+  float: left;
+  width: 29em;
+  color: #5e4abb;
+  text-align: center;
+  padding-top: 6em;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  padding-bottom: 6em;
+  font-family: 'Roboto', sans-serif;
+  width: 307px;
+  height: 306px;
+  background: #f2eeee;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 217px;
+  margin-left: 5em;
+}
+.howdoesitwork {
+  margin: 0 auto;
+  display: table;
+  color: #30aedb;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 2em;
+  padding-bottom: 3em;
+}
 .footer {
   background-color: #a2d7d3;
   width: 100%;
-  height: 80px;
-}
-.create-new-survey {
-  color: #5180a1;
-  font-family: 'Roboto', sans-serif;
-  background-color: #e1e5ed;
-  padding: 1em;
+  height: 7em;
+  margin-top: 18em;
 }
 input.form-control {
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
+}
+.create-new-survey {
+  color: #4da1db;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e1e5ed;
+  padding: 1em;
 }
