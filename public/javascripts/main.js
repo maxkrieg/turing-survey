@@ -196,6 +196,7 @@ $(document).ready(function() {
       console.log('success creating survey');
       $('.create-new-survey').remove();
       $('.new-questions-list').append(response);
+      $('.multiple-choice, .scale, .text').hide();
       $('#new-survey-questions, .create-survey-done').show();
     }).fail(function() {
       console.log('error POSTing survey');
@@ -203,16 +204,15 @@ $(document).ready(function() {
   });
 
   // Hides or shows based on newly selected question type
-  $('.new-question-type')
-    .change(function() {
-      var selectedType = "";
-      $('.new-question-type option:selected').each(function() {
-        selectedType += $(this).text();
-      });
-      renderInputs(selectedType);
-    }).change();
+  $('.new-questions-list').on('change', '.new-question-type', function() {
+    var selectedType = "";
+    $('.new-question-type option:selected').each(function() {
+      selectedType += $(this).text();
+    });
+    renderInputs(selectedType);
+  }).change();
 
-  $('.new-question-save').on('click', function() {
+  $('.new-questions-list').on('click', '.new-question-save', function() {
     // grab question values
     var title = $('#new-question-title').val();
     var helpText = $('#new-question-helptext').val();
@@ -223,7 +223,8 @@ $(document).ready(function() {
         choices.push($(this).val());
       });
     }
-    var surveyId = "";
+    var surveyId = $('#new-question-form').attr('data-survey-id');
+    console.log(surveyId);
 
     var question = {
       title: title,
@@ -231,20 +232,24 @@ $(document).ready(function() {
       type: type,
       choices: choices
     };
-    // send POST request
+
+    //send POST request
     $.ajax({
       method: 'POST',
       url: '/surveys/' + surveyId + '/questions',
       data: JSON.stringify(question),
       contentType: "application/json; charset=utf-8"
     }).done(function(response) {
-      $('.new-questions-list').append(response);
+      console.log('success POSTing question');
+      $('.new-questions-list').prepend(response);
+      $('#new-question-title').val('');
+      $('#new-question-helptext').val('');
+      $('.multiple-choice-option').each(function(index) {
+        $(this).val('');
+      });
     }).fail(function() {
       console.log('error POSTing new question');
     });
-
-
-    // append question in .done
   });
 
 
@@ -253,7 +258,7 @@ $(document).ready(function() {
   $('#survey-questions').children('.view- survey - question ').hide();
   $('#survey-questions, .view-survey-question:first-child').show();
 
-  $('.next - question, .submit-survey-guest').on('click', function(e) {
+  $('.next-question, .submit-survey-guest').on('click', function(e) {
     e.preventDefault();
     var questionType = $('#question-title').attr('data-type');
     console.log('submitted type:' + questionType);
