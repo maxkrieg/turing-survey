@@ -5,6 +5,7 @@ var appRouter = express.Router();
 var Survey = require('../lib/surveys.js');
 var Question = require('../lib/question.js');
 var util = require('util');
+var fs = require('fs');
 //////////////////////////////////////////
 
 // SURVEY ROUTES
@@ -85,14 +86,14 @@ appRouter.post('/', function(req, res) {
       console.log(error);
       res.sendStatus(400);
     } else {
-      // This will take the newly created survey and fill in the survey.jade template
-      fs.readFile('./templates/create-survey.jade', 'utf8', function(err, data) {
+      // This will take the newly created survey and fill in the questionform.jade template
+      fs.readFile('./templates/questionform.jade', 'utf8', function(err, data) {
         if (err) {
           res.sendStatus(400);
         }
         var surveyCompiler = jade.compile(data);
         var html = surveyCompiler(survey);
-        // This sends the filled in survey template back to client
+        // This sends the filled in question template back to client
         res.send(html);
         res.status(201);
       });
@@ -197,7 +198,7 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
 });
 
 // Insert Response in Question response array
-appRouter.get('/:id/questions/:question_id/response', jsonParser);
+appRouter.put('/:id/questions/:question_id/response', jsonParser);
 appRouter.put('/:id/questions/:question_id/response', function(req, res) {
   Survey.update({
     _id: req.params.id,

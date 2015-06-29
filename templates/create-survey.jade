@@ -11,8 +11,9 @@ block content
             label(for="description") Survey Description
             textarea#new-survey-description.form-control(rows="3")
           a.btn.btn-primary(type="submit", class="create-survey-submit", href="/surveys") Submit
-        .list-group#new-survey-questions
+        #new-survey-questions
           h2 Add Questions to Your Survey
-          include questionform
+          .list-group.new-questions-list
+            include questionform
         br
         a.btn.btn-primary.create-survey-done(type="submit", href="/surveys") Done
