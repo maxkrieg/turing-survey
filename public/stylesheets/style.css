@@ -7,7 +7,7 @@ body {
   display: table;
   text-align: center;
   background-repeat: no-repeat;
-  margin-top: 3em;
+  margin-top: -2em;
   width: 100%;
   height: 21em;
   color: #fff;
@@ -27,6 +27,10 @@ body {
   margin-top: 3em;
   color: #6cb56c;
   margin-bottom: 4em;
+}
+.col-sm-12 {
+  background-color: #d5e0dc;
+  color: #3f77c2;
 }
 .navbar-default .navbar-brand {
   color: #67b25f;
@@ -54,7 +58,17 @@ body {
   margin-top: 2em;
 }
 .footer {
-  background-color: #bbcee7;
+  background-color: #a2d7d3;
   width: 100%;
   height: 80px;
+}
+.create-new-survey {
+  color: #5180a1;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e1e5ed;
+  padding: 1em;
+}
+input.form-control {
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
 }
