@@ -1,11 +1,14 @@
 // BASE SETUP /////////////////////////////////////////////////////
 
+// EXPRESS
+var express = require('express');
+
 // MONGOOSE & MONGODB
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/turingdb');
+var MongoStore = require('connect-mongo')(session);
+var session = require('express-session');
 
-// EXPRESS
-var express = require('express');
 // Create instance of an express application
 var app = express();
 
@@ -24,7 +27,7 @@ app.set('views', './templates');
 var stylus = require('stylus');
 var nib = require('nib');
 
-//PASSPORT
+// PASSPORT
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var path = require('path');
@@ -32,48 +35,52 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 
-// IMPORT SCHEMA
-var User = require('./lib/user.js');
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-var Question = require('./lib/question.js');
-var Survey = require('./lib/surveys.js');
-
-
-// IMPORT ROUTES
+// ROUTES
 var authRoutes = require('./routes/auth');
 var appRoutes = require('./routes/app-routes');
 var apiRoutes = require('./routes/api-routes');
 var homeRoutes = require('./routes/index');
 
+// SCHEMA
+var Question = require('./lib/question.js');
+var Survey = require('./lib/surveys.js');
 
-// STYLUS AND NIB CONFIG
-// creates compile func, calls stylus & nib middlewear in stack
+// STYLUS AND NIB CONFIG: Compile Func
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
     .use(nib());
 }
 
-//PASSPORT SHIT
+// CONFIGURATION /////////////////////////////////////////////////////////////////////////
+
+// PASSPORT
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(require('express-session')({
-  secret: 'keyboard cat',
+app.use(session({
+  store: new MongoStore({
+    url: MongoURI
+  }),
+  secret: 'learn node',
   resave: true,
   saveUninitialized: false
 }));
+app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// USER
+var User = require('./lib/user.js');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// set up express to use stylus middlewear and pass in compile function as object
+
+// Express & Stylus Compile
 app.use(stylus.middleware({
   src: __dirname + '/public',
   compile: compile
