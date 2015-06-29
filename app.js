@@ -55,21 +55,22 @@ function compile(str, path) {
   return stylus(str)
     .set('filename', path)
     .use(nib());
-};
+}
 
 //PASSPORT SHIT
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(require('express-session')({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join('./public', 'public')));
 
 
 // set up express to use stylus middlewear and pass in compile function as object
