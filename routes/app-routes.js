@@ -227,20 +227,26 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
 appRouter.put('/:id/questions/:question_id/response', jsonParser);
 appRouter.put('/:id/questions/:question_id/response', function(req, res) {
   Survey.update({
-    _id: req.params.id,
-    'questions._id': req.params.question_id
-  }, {
-    $push: {
-      responses: req.body
-    }
-  }, function(err, question) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(400);
-    }
-    console.log('updated question');
-    res.sendStatus(200);
-  });
+      questions: {
+        $elemMatch: {
+          _id: req.params.question_id
+        }
+      }
+    }, {
+      $push: {
+        'questions.$.responses': req.body.response
+      }
+    }, {
+      new: true
+    },
+    function(err, question) {
+      if (err) {
+        console.log(err);
+        res.sendStatus(404);
+      }
+      console.log(question);
+      res.sendStatus(200);
+    });
 });
 
 // Delete specific question

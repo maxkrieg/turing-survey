@@ -17,26 +17,7 @@ $(document).ready(function() {
     }).fail(function() {
       console.log("error DELETING SURVEY");
     });
-
   });
-
-  // CREATE QUESTION ////////////////////////////////////////////////////////////////////////////
-  $('#create-question-submit').on('click', function(e){
-      e.preventDefault();
-      var question = {
-        title: $('input[name="title"]').val(),
-        helpText: $('input[name="help-text"]').val()
-      };
-      $.ajax({
-        method: 'POST',
-        url: '/create',
-        data: JSON.stringify(question),
-        contentType: "application/json; charset=utf-8"
-      }).done(function(response){
-        $('.questions').append(response);
-      })
-    });
-
 
   // EDIT SURVEY VIEW ////////////////////////////////////////////////////////////////////////////
 
@@ -255,27 +236,51 @@ $(document).ready(function() {
 
 
   // TAKE SURVEY ////////////////////////////////////////////////////////////////////////////
-  $('#survey-questions').children('.view- survey - question ').hide();
+  $('#survey-questions').children('.view-survey-question').hide();
   $('#survey-questions, .view-survey-question:first-child').show();
 
   $('.next-question, .submit-survey-guest').on('click', function(e) {
     e.preventDefault();
-    var questionType = $('#question-title').attr('data-type');
+    var questionType = $('#take-question-title').attr('data-type');
     console.log('submitted type:' + questionType);
     var response = '';
 
     if (questionType === 'Multiple Choice') {
-      // response = value of radio button
+      response = 'multiple choice response';
     } else if (questionType === 'Scale') {
-      response = $(this).parents('.list - group - item ').find('.scale - response option: selected ').text();
+      response = $(this).parents('.list-group-item').find('.scale-response option:selected').text();
     } else if (questionType === 'Text') {
       response = $('#text-response').val();
     }
+    console.log(response);
+
+    var surveyId = $('#take-survey-title').attr('data-survey-id');
+    var questionId = $('#take-question-title').attr('data-question-id');
+    var url = '/surveys/' + surveyId + '/questions/' + questionId + '/response';
+    var responseObject = {
+      response: response
+    };
+
+    $.ajax({
+      method: 'PUT',
+      url: url,
+      data: JSON.stringify(responseObject),
+      contentType: "application/json; charset=utf-8"
+    }).done(function() {
+      console.log("success submitting answer");
+    }).fail(function() {
+      console.log("error updating question");
+    });
+
 
     $(this).parents('.list-group-item').remove();
-    $('#survey-questions .view-survey-question:first-child').show();
+    $('#survey-questions, .view-survey-question:first-child').show();
+
 
   });
 
 
-});
+
+
+
+}); /* Closing for document.ready */
