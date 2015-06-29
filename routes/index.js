@@ -1,14 +1,20 @@
-//moved this route to auth.js
+var express = require('express');
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+var homeRouter = express.Router();
+//////////////////////////////////////////
 
-// var express = require('express');
-// var bodyParser = require('body-parser');
-// var jsonParser = bodyParser.json();
-// var homeRouter = express.Router();
-// //////////////////////////////////////////
+homeRouter.get('/', function(req, res) {
+  if(!req.session.views) {
+    req.session.views = 0;
+  }
+  req.session.views++;
+  res.render('index', {
+    title: 'Express',
+    user: req.user,
+    views: req.session.views
+  });
+});
 
-// homeRouter.get('/', function(req, res) {
-//   res.render('index');
-// });
-
-// //////////////////////////////////////////
-// module.exports = homeRouter;
+//////////////////////////////////////////
+module.exports = homeRouter;

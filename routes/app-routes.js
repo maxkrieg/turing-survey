@@ -4,12 +4,21 @@ var jsonParser = bodyParser.json();
 var appRouter = express.Router();
 var Survey = require('../lib/surveys.js');
 var Question = require('../lib/question.js');
+var User = require('../lib/user.js');
 var util = require('util');
 var fs = require('fs');
 var jade = require('jade');
 var stylus = require('stylus');
 var nib = require('nib');
 var path = require('path');
+
+//Custom middleware for User Auth
+appRouter.use(function(req, res, next) {
+  if(!req.user) {
+    res.redirect('/');
+  }
+  next();
+});
 
 // STYLUS AND NIB CONFIG
 // creates compile func, calls stylus & nib middlewear in stack
