@@ -17,6 +17,7 @@ appRouter.use(function(req, res, next) {
   if (!req.user) {
     res.redirect('/');
   }
+  console.log(util.inspect(req.user));
   next();
 });
 
