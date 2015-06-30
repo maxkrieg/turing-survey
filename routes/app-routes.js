@@ -121,23 +121,6 @@ appRouter.get('/:id/results', function(req, res) {
   });
 });
 
-// // View specific Survey as Guest: url-survey.jade
-// appRouter.get('/:id/guest', function(req, res) {
-//   Survey.findOne({
-//     _id: req.params.id
-//   }, function(err, survey) {
-//     if (err) {
-//       console.log(err);
-//       res.sendStatus(404);
-//     }
-//     res.render('url-survey', {
-//       survey: survey
-//     });
-//   });
-// });
-
-
-
 // View specific Survey as User: edit-survey.jade
 appRouter.get('/:id', function(req, res) {
   Survey.findOne({
@@ -209,24 +192,6 @@ appRouter.delete('/:id', function(req, res) {
 
 // QUESTION ROUTES
 
-// appRouter.get('/:id/questions/:question_id', function(req, res) {
-//   Survey.find({
-//     _id: req.params.id
-//   }, {
-//     questions: {
-//       $elemMatch: {
-//         _id: req.params.question_id
-//       }
-//     }
-//   }, function(err, question) {
-//     if (err) {
-//       console.log(err);
-//       res.sendStatus(404);
-//     }
-//     res.json(question);
-//   });
-// });
-
 // Create new question: question.jade
 appRouter.post('/:id/questions/', jsonParser);
 appRouter.post('/:id/questions/', function(req, res) {
@@ -280,32 +245,6 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
   });
 });
 
-// // Insert Response in Question response array
-// appRouter.put('/:id/questions/:question_id/response', jsonParser);
-// appRouter.put('/:id/questions/:question_id/response', function(req, res) {
-//   Survey.update({
-//       questions: {
-//         $elemMatch: {
-//           _id: req.params.question_id
-//         }
-//       }
-//     }, {
-//       $push: {
-//         'questions.$.responses': req.body.response
-//       }
-//     }, {
-//       new: true
-//     },
-//     function(err, question) {
-//       if (err) {
-//         console.log(err);
-//         res.sendStatus(404);
-//       }
-//       console.log(question);
-//       res.sendStatus(200);
-//     });
-// });
-
 // Delete specific question
 appRouter.delete('/:id/questions/:question_id', function(req, res) {
   Survey.update({
@@ -325,11 +264,6 @@ appRouter.delete('/:id/questions/:question_id', function(req, res) {
     res.sendStatus(204);
   });
 });
-
-
-
-
-
 
 //////////////////////////////////////////
 module.exports = appRouter;
