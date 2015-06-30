@@ -5,10 +5,20 @@ var express = require('express');
 
 // MONGOOSE & MONGODB
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/turingdb');
-var MongoStore = require('connect-mongo')(session);
-var session = require('express-session');
+// mongoose.connect('mongodb://localhost/turingdb');
 
+var MongoURI = 'mongodb://localhost/turingdb';
+mongoose.connect(MongoURI, function(err, res) {
+  if (err) {
+    console.log('ERROR connecting to: ' + MongoURI + '. ' + err);
+  } else {
+    console.log('MongoDB connected successfully to ' + MongoURI);
+  }
+});
+
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var methodOverride = require('method-override');
 // Create instance of an express application
 var app = express();
 
@@ -61,6 +71,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
+
+
 app.use(session({
   store: new MongoStore({
     url: MongoURI
@@ -69,6 +81,10 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
+
+
+
+
 app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session());
