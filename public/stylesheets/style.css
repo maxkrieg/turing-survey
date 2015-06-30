@@ -1,6 +1,6 @@
 body {
   padding-top: 70px;
-  background-color: #e7e4e4;
+  background-color: #e7e7e7;
 }
 .banner {
   margin: 0 auto;
@@ -23,6 +23,8 @@ body {
   color: #3f77c2;
   border-radius: 43px;
   padding: 3em;
+  background-color: #fff;
+  margin-bottom: 2em;
 }
 .navbar-default .navbar-brand {
   color: #67b25f;
@@ -147,19 +149,10 @@ section.list-group-item {
   font-family: 'Roboto', sans-serif;
 }
 .footer {
-  background-color: #454c4b;
+  background-color: #9ec869;
   width: 100%;
   height: 10em;
   margin-top: 18em;
-}
-label {
-  display: inline-block;
-  max-width: 100%;
-  margin-bottom: 5px;
-  font-weight: 700;
-  font-size: 13px;
-  color: #64c864;
-  font-family: 'Roboto', sans-serif;
 }
 input.form-control {
   font-size: 18px;
@@ -180,16 +173,13 @@ div#survey-questions {
   margin-right: 34em;
 }
 h2 {
-  border-style: solid;
   border-color: #fff;
   padding: 5px;
   margin-right: 16em;
   border-width: 1px;
   padding-left: 0em;
-  padding-left: 17px;
 }
 h3 {
-  border-style: solid;
   border-width: 1px;
   border-color: #fff;
   padding: 5px;
@@ -198,18 +188,8 @@ h3 {
 section.list-group-item {
   margin-right: 33em;
 }
-.h4,
-h4 {
-  font-size: 18px;
-  color: #4cb34c;
-}
 select.form-control.scale-response {
   margin-top: 1em;
-}
-a.btn.btn-primary.edit-survey-submit {
-  margin-left: 3em;
-  padding-left: 8em;
-  padding-right: 8em;
 }
 a.btn.btn-default {
   background-color: #f4d2a5;
@@ -232,4 +212,37 @@ h1 {
 }
 .list-group.new-questions-list {
   width: 92%;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #5e5e5e;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 1em;
+}
+.form-group {
+  margin-bottom: 15px;
+  margin-right: 34em;
+}
+a.btn.btn-primary.edit-survey-submit {
+  margin-left: 1em;
+  padding-left: 8em;
+  padding-right: 8em;
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+h4.list-group-item-heading {
+  background-color: #eeefed;
+  border-radius: 8px;
+  padding: 14px;
+  margin-right: 19em;
+}
+.h4,
+h4 {
+  font-size: 18px;
+  color: #4cb34c;
+  margin-bottom: 2em;
 }
