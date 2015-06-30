@@ -12,7 +12,63 @@ var stylus = require('stylus');
 var nib = require('nib');
 var path = require('path');
 
-//Custom middleware for User Auth
+// STYLUS AND NIB CONFIG
+// creates compile func, calls stylus & nib middlewear in stack
+// function compile(str, path) {
+//   return stylus(str)
+//     .set('filename', path)
+//     .use(nib());
+// }
+
+////////////////////////////////////////////////////////////////////////////
+
+// View specific Survey as Guest: url-survey.jade
+appRouter.get('/:id/guest', function(req, res) {
+  Survey.findOne({
+    _id: req.params.id
+  }, function(err, survey) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    }
+    res.render('url-survey', {
+      survey: survey
+    });
+  });
+});
+
+// Thank you page
+appRouter.get('/guest/thankyou', function(req, res) {
+  res.render('thank-you');
+});
+
+// Insert Response in Question response array
+appRouter.put('/:id/questions/:question_id/response', jsonParser);
+appRouter.put('/:id/questions/:question_id/response', function(req, res) {
+  Survey.update({
+      questions: {
+        $elemMatch: {
+          _id: req.params.question_id
+        }
+      }
+    }, {
+      $push: {
+        'questions.$.responses': req.body.response
+      }
+    }, {
+      new: true
+    },
+    function(err, question) {
+      if (err) {
+        console.log(err);
+        res.sendStatus(404);
+      }
+      console.log(question);
+      res.sendStatus(200);
+    });
+});
+
+/// Custom middleware for User Authentication
 appRouter.use(function(req, res, next) {
   if (!req.user) {
     res.redirect('/');
@@ -20,13 +76,7 @@ appRouter.use(function(req, res, next) {
   next();
 });
 
-// STYLUS AND NIB CONFIG
-// creates compile func, calls stylus & nib middlewear in stack
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .use(nib());
-}
+
 // // set up express to use stylus middlewear and pass in compile function as object
 // appRouter.use(stylus.middleware({
 //   src: __dirname + '/public',
@@ -71,24 +121,22 @@ appRouter.get('/:id/results', function(req, res) {
   });
 });
 
-// View specific Survey as Guest: url-survey.jade
-appRouter.get('/:id/guest', function(req, res) {
-  Survey.findOne({
-    _id: req.params.id
-  }, function(err, survey) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(404);
-    }
-    res.render('url-survey', {
-      survey: survey
-    });
-  });
-});
+// // View specific Survey as Guest: url-survey.jade
+// appRouter.get('/:id/guest', function(req, res) {
+//   Survey.findOne({
+//     _id: req.params.id
+//   }, function(err, survey) {
+//     if (err) {
+//       console.log(err);
+//       res.sendStatus(404);
+//     }
+//     res.render('url-survey', {
+//       survey: survey
+//     });
+//   });
+// });
 
-appRouter.get('/guest/thankyou', function(req, res) {
-  res.render('thank-you');
-});
+
 
 // View specific Survey as User: edit-survey.jade
 appRouter.get('/:id', function(req, res) {
@@ -232,31 +280,31 @@ appRouter.put('/:id/questions/:question_id', function(req, res) {
   });
 });
 
-// Insert Response in Question response array
-appRouter.put('/:id/questions/:question_id/response', jsonParser);
-appRouter.put('/:id/questions/:question_id/response', function(req, res) {
-  Survey.update({
-      questions: {
-        $elemMatch: {
-          _id: req.params.question_id
-        }
-      }
-    }, {
-      $push: {
-        'questions.$.responses': req.body.response
-      }
-    }, {
-      new: true
-    },
-    function(err, question) {
-      if (err) {
-        console.log(err);
-        res.sendStatus(404);
-      }
-      console.log(question);
-      res.sendStatus(200);
-    });
-});
+// // Insert Response in Question response array
+// appRouter.put('/:id/questions/:question_id/response', jsonParser);
+// appRouter.put('/:id/questions/:question_id/response', function(req, res) {
+//   Survey.update({
+//       questions: {
+//         $elemMatch: {
+//           _id: req.params.question_id
+//         }
+//       }
+//     }, {
+//       $push: {
+//         'questions.$.responses': req.body.response
+//       }
+//     }, {
+//       new: true
+//     },
+//     function(err, question) {
+//       if (err) {
+//         console.log(err);
+//         res.sendStatus(404);
+//       }
+//       console.log(question);
+//       res.sendStatus(200);
+//     });
+// });
 
 // Delete specific question
 appRouter.delete('/:id/questions/:question_id', function(req, res) {
