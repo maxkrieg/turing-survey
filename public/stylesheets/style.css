@@ -170,7 +170,7 @@ button.btn.btn.btn-default.delete-question {
   color: #fff;
 }
 div#survey-questions {
-  margin-right: 34em;
+  max-width: 85%;
 }
 h2 {
   border-color: #fff;
@@ -184,9 +184,6 @@ h3 {
   border-color: #fff;
   padding: 5px;
   margin-right: 20em;
-}
-section.list-group-item {
-  margin-right: 33em;
 }
 select.form-control.scale-response {
   margin-top: 1em;
@@ -222,6 +219,7 @@ h4.list-group-item-heading {
   border-radius: 8px;
   padding: 14px;
   margin-right: 19em;
+  min-width: 200px;
 }
 .h4,
 h4 {
@@ -267,9 +265,6 @@ input.form-control.multiple-choice-option {
   background-color: #f0ffff;
   color: #000;
 }
-section.list-group-item {
-  width: 35em;
-}
 .dashboardtitle {
   font-size: 2em;
   margin-bottom: 0em;
@@ -279,14 +274,19 @@ input#survey-title {
   width: 14em;
 }
 input#survey-description {
-  width: 354px;
+  max-width: 750px;
 }
 input#survey-title {
   width: 355px;
 }
 .notesforquestions {
-  width: 21em;
+  max-width: 85%;
   color: #808080;
+  padding-bottom: 5px;
+}
+#edit-question-title,
+#edit-question-helptext {
+  margin-left: 5px;
 }
 .form-group {
   width: 24em;
@@ -295,9 +295,6 @@ p.list-group-item-text {
   color: #609cec;
   padding-left: 16px;
   margin-top: 9px;
-}
-article.list-group-item {
-  width: 19em;
 }
 .lineone {
   font-size: 3em;
