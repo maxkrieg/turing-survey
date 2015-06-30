@@ -12,4 +12,6 @@ There are three different types of questions:
 2. Scale - a user creates a question title and all questions display options ranging only from 1-5.
 3. Text - a user creates a question title and the survey taker is given a text field to compose an answer, rather than selecting from a list.
 
-##Unsolved Problems
+##Future Features
+1. Being able to add a question to an existing survey
+2. Giving ownership of surveys to a particular User, so only the User sees their surveys.
