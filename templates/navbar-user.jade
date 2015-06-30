@@ -6,11 +6,10 @@
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href='/surveys') TuringSurvey
+        a.navbar-brand(href='/surveys') <strong>TuringSurvey</strong>
+        if (username)
+          a.navbar-brand <small>Logged in as #{username}</small>
       .navbar-collapse.collapse
-        ul.nav.navbar-nav
-          li
-            a(href='#') Welcome !
         ul.nav.navbar-nav.navbar-right
           li
             a(href='/auth/logout') Logout

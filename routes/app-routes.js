@@ -76,7 +76,6 @@ appRouter.use(function(req, res, next) {
   next();
 });
 
-
 // // set up express to use stylus middlewear and pass in compile function as object
 // appRouter.use(stylus.middleware({
 //   src: __dirname + '/public',
@@ -90,24 +89,30 @@ appRouter.use(function(req, res, next) {
 
 // View survey list: dashboard.jade
 appRouter.get('/', function(req, res) {
+  var user = req.user.username;
   Survey.find({}, function(err, surveyList) {
     if (err) {
       console.log(err);
       res.sendStatus(404);
     }
     res.render('dashboard', {
-      surveys: surveyList
+      surveys: surveyList,
+      username: user
     });
   });
 });
 
 // View the template to create a new survey
 appRouter.get('/create', function(req, res) {
-  res.render('create-survey');
+  var user = req.user.username;
+  res.render('create-survey', {
+    username: user
+  });
 });
 
 // View survey results
 appRouter.get('/:id/results', function(req, res) {
+  var user = req.user.username;
   Survey.findOne({
     _id: req.params.id
   }, function(err, survey) {
@@ -116,13 +121,15 @@ appRouter.get('/:id/results', function(req, res) {
       res.sendStatus(404);
     }
     res.render('view-results', {
-      survey: survey
+      survey: survey,
+      username: user
     });
   });
 });
 
 // View specific Survey as User: edit-survey.jade
 appRouter.get('/:id', function(req, res) {
+  var user = req.user.username;
   Survey.findOne({
     _id: req.params.id
   }, function(err, survey) {
@@ -131,7 +138,8 @@ appRouter.get('/:id', function(req, res) {
       res.sendStatus(404);
     }
     res.render('edit-survey', {
-      survey: survey
+      survey: survey,
+      username: user
     });
   });
 });
