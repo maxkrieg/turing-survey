@@ -12,7 +12,7 @@ block content
           label(for="surveydescription") Survey Description
           input#survey-description.form-control(name="description", type="text", value=survey.description)
         h3 Questions
-        h5 <strong>Note: <em>altering a question will clear all previously recorded guest responses from Database.</em></strong>
+        .notesforquestions <strong>Note: <em>altering a question will clear all previously recorded guest responses from Database.</em></strong>
         .list-group#survey-questions
           for question in survey.questions
             article(class="list-group-item")

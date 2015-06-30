@@ -55,6 +55,7 @@ body {
   padding-right: 4em;
   padding-top: 1em;
   padding-bottom: 1em;
+  color: #fff;
 }
 .loginsection {
   width: 27em;
@@ -158,7 +159,6 @@ input.form-control {
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
   color: #4570be;
-  font-family: 'Roboto', sans-serif;
 }
 button.btn.btn-default.edit-question {
   background-color: #3574c8;
@@ -210,23 +210,6 @@ h1 {
   padding: 1em;
   margin-right: 15em;
 }
-.list-group.new-questions-list {
-  width: 92%;
-}
-label {
-  display: inline-block;
-  max-width: 100%;
-  margin-bottom: 5px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #5e5e5e;
-  font-family: 'Roboto', sans-serif;
-  margin-left: 1em;
-}
-.form-group {
-  margin-bottom: 15px;
-  margin-right: 34em;
-}
 a.btn.btn-primary.edit-survey-submit {
   margin-left: 1em;
   padding-left: 8em;
@@ -245,4 +228,81 @@ h4 {
   font-size: 18px;
   color: #4cb34c;
   margin-bottom: 2em;
+}
+.surveytitle {
+  font-size: 28px;
+  margin-bottom: 1em;
+  width: 14em;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #5e5e5e;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 2em;
+}
+input#new-survey-title {
+  width: 16em;
+}
+textarea#new-survey-description {
+  width: 21em;
+}
+.addquestions {
+  font-size: 23px;
+  margin-bottom: 13px;
+  width: 16em;
+}
+.addnewquestions {
+  font-size: 21px;
+  width: 17em;
+  margin-bottom: 7px;
+}
+select.new-question-type.form-control {
+  width: 11em;
+}
+input.form-control.multiple-choice-option {
+  background-color: #f0ffff;
+  color: #000;
+}
+section.list-group-item {
+  width: 35em;
+}
+.dashboardtitle {
+  font-size: 2em;
+  margin-bottom: 0em;
+  width: 17em;
+}
+input#survey-title {
+  width: 14em;
+}
+input#survey-description {
+  width: 354px;
+}
+input#survey-title {
+  width: 355px;
+}
+.notesforquestions {
+  width: 21em;
+  color: #808080;
+}
+.form-group {
+  width: 24em;
+}
+p.list-group-item-text {
+  color: #609cec;
+  padding-left: 16px;
+  margin-top: 9px;
+}
+article.list-group-item {
+  width: 19em;
+}
+.lineone {
+  font-size: 3em;
+}
+.linetwo {
+  font-size: 3em;
+  color: #6dc585;
 }

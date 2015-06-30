@@ -5,14 +5,14 @@ block content
     .row
       .col-sm-12
         .create-new-survey
-          h2 Create New Survey
+          .surveytitle Create New Survey
           input.form-control(type="text", placeholder="Survey Title", id="new-survey-title")
           .form-group
             label(for="description") Survey Description
             textarea#new-survey-description.form-control(rows="3")
           a.btn.btn-primary(type="submit", class="create-survey-submit") Submit
         #new-survey-questions
-          h2 Add Questions to Your Survey
+          .addquestions Add Questions to Your Survey
           .list-group.new-questions-list
             //- Append question form here
             //- Append newly added questions here
