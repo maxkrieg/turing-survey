@@ -10,6 +10,12 @@ block content
           for question in survey.questions
             article(class="list-group-item")
               h4 #{question.title}
-              h5 #{question.helpText}
-              for response in question.responses
-                li #{response}
+              h5 Type: #{question.type}
+              if (question.type == "Scale")
+                p Average response: #{question.calculatedResult} / 5
+              else if (question.type == "Multiple Choice")
+                each val, index in question.calculatedResult
+                  li= index + ': ' + val
+              else if (question.type == "Text")
+                for response in question.responses
+                  li #{response}
