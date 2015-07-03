@@ -1,22 +1,27 @@
 extends layout
 block content
   include navbar-home
-  .banner
-    .lineone Easily create and share custom surveys.
-    .linetwo Get the answers you need.
-    a.waves-effect.waves-light.btn(href="/auth/login") Get Started Now
-
-  .howdoesitwork
-    h1                      How Does It Work?
-  .loginsection
-    h1
-      i.fa.fa-check         Login or signup to get started today.
-  .customersection
-    h1
-      i.fa.fa-user-plus     Customer your survey type, questions, and responses
-  .sharesection
-    h1
-      i.fa.fa-bullhorn      Share your surveys and easily track results
-
-  .footer
+  .container
+    .row
+      .col-xs-12
+        .banner
+          .lineone Easily create and share custom surveys.
+          .linetwo Get the answers you need.
+          a.waves-effect.waves-light.btn(href="/auth/login", id="get-started-now") Get Started Now
+    .row
+      .col-sm-4
+        .loginsection
+          h1
+            i.fa.fa-sign-in
+              p Login or signup to get started today.
+      .col-sm-4
+        .customersection
+          h1
+            i.fa.fa-user-plus
+              p Customize question types and responses
+      .col-sm-4
+        .sharesection
+          h1
+            i.fa.fa-bullhorn
+              p Share your surveys and easily track results
 

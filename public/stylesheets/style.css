@@ -3,11 +3,10 @@ body {
   background-color: #e7e7e7;
 }
 .banner {
-  margin: 0 auto;
   display: table;
   text-align: center;
   background-repeat: no-repeat;
-  margin-top: -2em;
+  margin-top: 5px;
   width: 100%;
   height: 21em;
   color: #fff;
@@ -19,17 +18,10 @@ body {
 .navbar-default .navbar-nav>li>a {
   color: #5956ae;
 }
-.col-sm-12 {
-  color: #3f77c2;
-  border-radius: 43px;
-  padding: 3em;
-  background-color: #fff;
-  margin-bottom: 2em;
-}
 .navbar-default .navbar-brand {
   color: #67b25f;
 }
-.btn {
+#get-started-now {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -57,249 +49,12 @@ body {
   padding-bottom: 1em;
   color: #fff;
 }
-.loginsection {
-  width: 27em;
+.loginsection,
+.customersection,
+.sharesection {
   text-align: center;
   color: #58c358;
-  float: left;
-  padding-top: 6em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-top: 25%;
   text-align: center;
-  padding-bottom: 6em;
   font-family: 'Roboto', sans-serif;
-  width: 307px;
-  height: 306px;
-  background: #f2eeee;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 217px;
-  margin-left: 7em;
-}
-.customersection {
-  float: left;
-  width: 30em;
-  color: #808080;
-  text-align: center;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;
-  padding-top: 6em;
-  padding-bottom: 6em;
-  font-family: 'Roboto', sans-serif;
-  width: 307px;
-  height: 306px;
-  background: #f2eeee;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 217px;
-  margin-left: 5em;
-}
-.sharesection {
-  float: left;
-  width: 29em;
-  color: #5e4abb;
-  text-align: center;
-  padding-top: 6em;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;
-  padding-bottom: 6em;
-  font-family: 'Roboto', sans-serif;
-  width: 307px;
-  height: 306px;
-  background: #f2eeee;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 217px;
-  margin-left: 5em;
-}
-.howdoesitwork {
-  margin: 0 auto;
-  display: table;
-  color: #30aedb;
-  font-family: 'Roboto', sans-serif;
-  border-style: solid;
-  padding: 1em;
-  margin-top: 4em;
-  margin-bottom: 4em;
-}
-input.form-control {
-  font-size: 18px;
-  font-family: 'Roboto', sans-serif;
-}
-.create-new-survey {
-  color: #4da1db;
-  font-family: 'Roboto', sans-serif;
-  background-color: #e1e5ed;
-  padding: 1em;
-}
-p.list-group-item-text {
-  color: #59c359;
-}
-a.btn.btn-default {
-  background-color: #f4d2a5;
-  color: #fff;
-  padding: 10px;
-}
-h4#question-title {
-  color: #81cb81;
-}
-section.list-group-item {
-  margin-top: 1em;
-  font-family: 'Roboto', sans-serif;
-}
-.footer {
-  background-color: #9ec869;
-  width: 100%;
-  height: 10em;
-  margin-top: 18em;
-}
-input.form-control {
-  font-size: 18px;
-  font-family: 'Roboto', sans-serif;
-  color: #4570be;
-}
-button.btn.btn-default.edit-question {
-  background-color: #3574c8;
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
-}
-button.btn.btn.btn-default.delete-question {
-  background-color: #b4d084;
-  color: #fff;
-}
-div#survey-questions {
-  max-width: 85%;
-}
-h2 {
-  border-color: #fff;
-  padding: 5px;
-  margin-right: 16em;
-  border-width: 1px;
-  padding-left: 0em;
-}
-h3 {
-  border-width: 1px;
-  border-color: #fff;
-  padding: 5px;
-  margin-right: 20em;
-}
-select.form-control.scale-response {
-  margin-top: 1em;
-}
-a.btn.btn-default {
-  background-color: #f4d2a5;
-  color: #fff;
-  margin: 10px;
-  padding: 9px;
-  margin-top: 3em;
-  font-family: 'Roboto', sans-serif;
-}
-.h1,
-h1 {
-  font-size: 25px;
-}
-.create-new-survey {
-  color: #4da1db;
-  font-family: 'Roboto', sans-serif;
-  background-color: #fff;
-  padding: 1em;
-  margin-right: 15em;
-}
-a.btn.btn-primary.edit-survey-submit {
-  margin-left: 1em;
-  padding-left: 8em;
-  padding-right: 8em;
-  margin-top: 1em;
-  margin-bottom: 3em;
-}
-h4.list-group-item-heading {
-  background-color: #eeefed;
-  border-radius: 8px;
-  padding: 14px;
-  margin-right: 19em;
-  min-width: 200px;
-}
-.h4,
-h4 {
-  font-size: 18px;
-  color: #4cb34c;
-  margin-bottom: 2em;
-}
-.surveytitle {
-  font-size: 28px;
-  margin-bottom: 1em;
-  width: 14em;
-}
-label {
-  display: inline-block;
-  max-width: 100%;
-  margin-bottom: 5px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #5e5e5e;
-  font-family: 'Roboto', sans-serif;
-  margin-top: 2em;
-}
-input#new-survey-title {
-  width: 16em;
-}
-textarea#new-survey-description {
-  width: 21em;
-}
-.addquestions {
-  font-size: 23px;
-  margin-bottom: 13px;
-  width: 16em;
-}
-.addnewquestions {
-  font-size: 21px;
-  width: 17em;
-  margin-bottom: 7px;
-}
-select.new-question-type.form-control {
-  width: 11em;
-}
-input.form-control.multiple-choice-option {
-  background-color: #f0ffff;
-  color: #000;
-}
-.dashboardtitle {
-  font-size: 2em;
-  margin-bottom: 0em;
-  width: 17em;
-}
-input#survey-title {
-  width: 14em;
-}
-input#survey-description {
-  max-width: 750px;
-}
-input#survey-title {
-  width: 355px;
-}
-.notesforquestions {
-  max-width: 85%;
-  color: #808080;
-  padding-bottom: 5px;
-}
-#edit-question-title,
-#edit-question-helptext {
-  margin-left: 5px;
-}
-.form-group {
-  width: 24em;
-}
-p.list-group-item-text {
-  color: #609cec;
-  padding-left: 16px;
-  margin-top: 9px;
-}
-.lineone {
-  font-size: 3em;
-}
-.linetwo {
-  font-size: 3em;
-  color: #6dc585;
 }
