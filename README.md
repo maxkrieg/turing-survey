@@ -1,5 +1,7 @@
-# survey_app
-WDI Project 3: Node.js survery builder application.  Max, Malin, Ali
+# Turing Survey
+This was built during the Web Development Immersive course at General Assembly and was my first app using Node.js, Express.js, and MongoDB.
+
+The static JS (main.js in public directory) was thrown together quickly and needs refactoring.  There are also a few features that need to be added, such as the ability to add questions to an existing survey (currently the user can only edit existing questions).
 
 ##User Stories & Wireframes
 Both of these are available at our group Trello Board: https://trello.com/b/ycwVZYKo/team-turing

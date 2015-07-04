@@ -1,25 +1,25 @@
 .edit-question-form(data-question="#{question.id}")
   .form-group
-    label(for="title") Title
-    input(name="title", id="edit-question-title", value=question.title)
+    h4 Title
+    input(name="title", id="edit-question-title", value=question.title, class="form-control")
   .form-group
-    label(for="helpText") Help Text
-    input(name="helpText", id="edit-question-helptext" value=question.helpText)
+    h4 Help Text
+    input(name="helpText", id="edit-question-helptext" value=question.helpText, class="form-control")
   .form-group
-    label(for="type") Question Type:
-      select.edit-type-select.form-control
-        if question.type == "Scale"
-          option Scale
-          option Multiple Choice
-          option Text
-        if question.type == "Multiple Choice"
-          option Multiple Choice
-          option Scale
-          option Text
-        if question.type == "Text"
-          option Text
-          option Scale
-          option Multiple Choice
+    h4 Question Type:
+    select.edit-type-select.form-control
+      if question.type == "Scale"
+        option Scale
+        option Multiple Choice
+        option Text
+      if question.type == "Multiple Choice"
+        option Multiple Choice
+        option Scale
+        option Text
+      if question.type == "Text"
+        option Text
+        option Scale
+        option Multiple Choice
   if question.type == 'Multiple Choice'
     .multiple-choice
       p Guest will have five options to choose from.  Customize those options by changing the fields below:
@@ -32,6 +32,6 @@
     include multiple-choice
     include scale
     include text
-  div.btn-group.btn-group-sm(role="group")
+  div.btn-group.btn-group-sm.edit-question-save-cancel-btns(role="group")
     button.btn.btn-primary.btn-sm.edit-question-save(type="submit", data-question-id="#{question.id}") Save
     button.btn.btn-primary.btn-sm.edit-question-cancel(type="cancel") Cancel

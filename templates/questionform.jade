@@ -1,21 +1,23 @@
 article(class="list-group-item", data-survey-id="#{id}", id="new-question-form")
-  .addnewquestions Add New Question:
-  input(type="text", placeholder="Question Title", id="new-question-title")
-  input(type="text", placeholder="Question Help Text", id="new-question-helptext")
+  h4.addnewquestions Add New Question:
+  .form-group.form-group-md
+    input(type="text", placeholder="Question Title", id="new-question-title", class="form-control")
+  .form-group.form-group-md
+    input(type="text", placeholder="Question Help Text", id="new-question-helptext", class="form-control")
   .form-group
-    label(for="type") Question Type:
-      select.new-question-type.form-control
-        option Choose Type:
-        option Scale
-        option Multiple Choice
-        option Text
+    h5 Question Type
+    select.new-question-type.form-control
+      option Choose Type:
+      option Scale
+      option Multiple Choice
+      option Text
 
     include multiple-choice.jade
     include scale.jade
     include text.jade
 
   div.btn-group.btn-group-sm(role="group")
-    a.btn.btn-primary.btn-sm.new-question-save(type="submit") Save
+    a.btn.btn-primary.btn-sm.new-question-save(type="submit") Add
     a.btn.btn-primary.btn-sm.new-question-cancel(type="cancel", href="/surveys") Cancel
 
 

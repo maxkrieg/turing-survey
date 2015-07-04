@@ -3,13 +3,13 @@ block content
   include navbar-user.jade
   .container
     .row
-      .col-sm-12
-        h2(id="#{survey.id}") Edit: #{survey.title}
-        .form-group
-          label(for="surveytitle") Survey Title
+      .col-xs-8.col-xs-offset-2
+        h2(id="#{survey.id}", class="edit-survey-header") Edit Survey
+        .form-group.form-group-lg
+          h3 Title
           input#survey-title.form-control(name="survey-title", type="text", value=survey.title)
-        .form-group
-          label(for="surveydescription") Survey Description
+        .form-group.form-group-lg
+          h3 Description
           input#survey-description.form-control(name="description", type="text", value=survey.description)
         h3 Questions
         .notesforquestions <strong>Note: <em>altering a question will clear all previously recorded guest responses from Database.</em></strong>
@@ -22,6 +22,7 @@ block content
                 button(class="btn btn-default edit-question", data-id="#{question.id}") Edit
                 button(class="btn btn btn-default delete-question", data-id="#{question.id}") Delete
               include edit-question
-      a.btn.btn-primary(class="edit-survey-submit", href="/surveys/") Done
+        .done-editing-survey-btn
+          a.btn.btn-primary.btn-lg(class="edit-survey-submit", href="/surveys") Done
 
 

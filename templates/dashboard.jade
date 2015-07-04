@@ -3,20 +3,21 @@ block content
   include navbar-user.jade
   .container
     .row
-      .col-sm-12
-        h1.dashboardtitle Survey Dashboard
-        a.btn.btn-primary(href="surveys/create") Create Survey
-        .list-group
+      .col-xs-10.col-xs-offset-1
+        h1.dashboard-title Survey Dashboard
+        .create-survey-btn
+          a.btn.btn-primary.btn-lg(href="surveys/create") Create New Survey
+        .list-group#survey-dashboard-list
           for survey in surveys
-            section.list-group-item(href='#')
+            section.list-group-item.survey-dashboard-list-item(href='#')
               h4.list-group-item-heading #{survey.title}
               p.list-group-item-text #{survey.description}
-              div.btn-group.btn-group-sm(role='group')
-                a.btn.btn-default(href="surveys/#{survey.id}/results") View Results
-                a.btn.btn-default(href="surveys/#{survey.id}/guest") View as Guest
-              div.btn-group.btn-group-sm(role='group')
-                a.btn.btn-default(href="surveys/#{survey.id}") Edit
-                a.btn.btn-default.delete-survey(data-id="#{survey.id}") Delete
+              .survey-dashboard-li-btn-group
+                .btn-group.btn-group-xs(role='group')
+                  a.btn.btn-primary(href="surveys/#{survey.id}/results") Results
+                  a.btn.btn-primary(href="surveys/#{survey.id}/guest") View
+                  a.btn.btn-primary(href="surveys/#{survey.id}") Edit
+                  a.btn.btn-primary.delete-survey(data-id="#{survey.id}") Delete
 
 
 

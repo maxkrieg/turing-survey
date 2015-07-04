@@ -20,8 +20,7 @@ $(document).ready(function() {
 
   // EDIT SURVEY VIEW ////////////////////////////////////////////////////////////////////////////
 
-  $('.edit-survey-submit').on('click', function(e) {
-    e.preventDefault();
+  $('.edit-survey-submit').on('click', function() {
     var title = $('#survey-title').val();
     var description = $('#survey-description').val();
     var surveyId = $('h2').attr('id');

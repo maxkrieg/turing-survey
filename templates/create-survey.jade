@@ -2,20 +2,25 @@ extend layout
 block content
   include navbar-user
   .container
-    .row
-      .col-sm-12
-        .create-new-survey
-          .surveytitle Create New Survey
-          input.form-control(type="text", placeholder="Survey Title", id="new-survey-title")
-          .form-group
-            label(for="description") Survey Description
-            textarea#new-survey-description.form-control(rows="3")
+    .create-new-survey
+      .row
+        .col-xs-10.col-xs-offset-1
+          h1 Create New Survey
+          h4 Start by giving your Survey a title and a description.
+      .row
+        .col-xs-6.col-xs-offset-3
+          .form-group.form-group-lg
+            input.form-control(type="text", placeholder="Survey Title", id="new-survey-title")
+          .form-group.form-group-lg
+            textarea#new-survey-description.form-control(rows="3", placeholder="Survey Description")
           a.btn.btn-primary(type="submit", class="create-survey-submit") Submit
-        #new-survey-questions
-          .addquestions Add Questions to Your Survey
+    #new-survey-questions
+      h3.add-questions-header Now Add Questions to Your Survey!
+      .row
+        .col-xs-8.col-xs-offset-2
           .list-group.new-questions-list
             //- Append question form here
             //- Append newly added questions here
-        br
+      #done-creating-survey-btn
         a.btn.btn-primary.create-survey-done(type="submit", href="/surveys") Done
 

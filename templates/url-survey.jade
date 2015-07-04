@@ -4,9 +4,10 @@ block content
 
   .container
     .row
-      .col-sm-12
-        h1(data-survey-id="#{survey.id}", id="take-survey-title") #{survey.title}
-        h4 #{survey.description}
+      .col-xs-8.col-xs-offset-2
+        .take-survey-headers
+          h1(data-survey-id="#{survey.id}", id="take-survey-title") #{survey.title}
+          h4 #{survey.description}
         .list-group#survey-questions
           if (survey.questions.length > 0 )
             for question in survey.questions

@@ -1,25 +1,15 @@
 body {
   padding-top: 70px;
-  background-color: #e7e7e7;
+  padding-bottom: 90px;
 }
 .banner {
   display: table;
   text-align: center;
-  background-repeat: no-repeat;
   margin-top: 5px;
   width: 100%;
   height: 21em;
-  color: #fff;
-  background-color: #364a88;
-  font-family: 'Roboto', sans-serif;
   padding-top: 5em;
   padding-bottom: 5em;
-}
-.navbar-default .navbar-nav>li>a {
-  color: #5956ae;
-}
-.navbar-default .navbar-brand {
-  color: #67b25f;
 }
 #get-started-now {
   display: inline-block;
@@ -52,9 +42,89 @@ body {
 .loginsection,
 .customersection,
 .sharesection {
-  text-align: center;
-  color: #58c358;
   padding-top: 25%;
+}
+.dashboard-title,
+.create-survey-btn {
   text-align: center;
+}
+#survey-dashboard-list {
+  margin-top: 20px;
+}
+.list-group-item {
+  margin-bottom: 15px;
+}
+.survey-dashboard-li-btn-group {
+  margin-top: 10px;
+}
+.create-new-survey,
+.add-questions-header,
+#done-creating-survey-btn,
+.done-editing-survey-btn,
+.take-survey-headers,
+.edit-survey-header,
+.loginsection,
+.customersection,
+.sharesection {
+  text-align: center;
+}
+#new-survey-description {
+  margin-top: 10px;
+}
+.notesforquestions {
+  margin-bottom: 10px;
+}
+.edit-type-select {
+  margin-top: 10px;
+}
+.edit-question-save-cancel-btns {
+  margin-top: 10px;
+}
+select {
+  margin: 10px 0;
+  max-width: 200px;
+}
+.view-results-survey-header {
+  text-align: center;
+}
+.navbar-fixed-bottom {
+  padding-top: 5px;
+}
+body {
+  background-color: #e7e7e7;
   font-family: 'Roboto', sans-serif;
+}
+#navbar-brand {
+  color: #67b25f;
+}
+#navbar-loggedin,
+#navbar-logout,
+#navbar-login,
+#navbar-register {
+  color: #286090;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.banner {
+  background-repeat: no-repeat;
+  color: #fff;
+  background-color: #364a88;
+  font-family: 'Roboto', sans-serif;
+}
+.home-page-headers {
+  margin-bottom: 175px;
+}
+.loginsection,
+.customersection,
+.sharesection {
+  color: #58c358;
+  font-family: 'Roboto', sans-serif;
+}
+.list-group-item {
+  box-shadow: 5px 4px #808080;
+  border: 1px solid #000;
+}
+.navbar-fixed-bottom {
+  text-align: center;
+  color: #286090;
 }

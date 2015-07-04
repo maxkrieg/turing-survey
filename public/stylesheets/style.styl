@@ -1,41 +1,22 @@
+/// POSITIONING
 
-//////////// Body //////////////
+// body
+body
+  padding-top 70px
+  padding-bottom 90px
 
-body {
-  padding-top: 70px;
-  background-color: #E7E7E7;
-}
-
-/////// Purple Banner - Front Page /////////
-
-.banner {
-  display: table;
-  text-align: center;
-  background-repeat: no-repeat;
-  margin-top: 5px;
-  width: 100%;
-  height: 21em;
-  color: #fff;
-  background-color: #364a88;
-  font-family: 'Roboto', sans-serif;
-  padding-top: 5em;
-  padding-bottom: 5em;
-}
-
-//// Logo Color on Front Page  /////
-.navbar-default .navbar-nav>li>a {
-  color: #5956AE;
-}
-
-///// Dashboard //////
+// Home Page Banner
+.banner
+  display table
+  text-align center
+  margin-top 5px
+  width 100%
+  height 21em
+  padding-top 5em
+  padding-bottom 5em
 
 
-///// Logout and login colors ///////
-.navbar-default .navbar-brand {
-  color: #67B25F;
-}
-
-//// Get Started Now Button on Front Page ///////
+// Get Started Now Button on Front Page
 #get-started-now {
   display: inline-block;
   padding: 6px 12px;
@@ -65,14 +46,93 @@ body {
   color: white;
 }
 
+// Home page headers
+.loginsection, .customersection, .sharesection
+  padding-top 25%
 
-//// Home page headers
+// Dashboard
+.dashboard-title, .create-survey-btn
+  text-align center
 
-.loginsection, .customersection, .sharesection {
-  text-align: center;
-  color: #58c358;
-  padding-top: 25%
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
+#survey-dashboard-list
+  margin-top 20px
 
+.list-group-item
+  margin-bottom 15px
+
+.survey-dashboard-li-btn-group
+  margin-top 10px
+
+// Create Survey
+.create-new-survey,
+.add-questions-header,
+#done-creating-survey-btn,
+.done-editing-survey-btn,
+.take-survey-headers,
+.edit-survey-header,
+.loginsection,
+.customersection,
+.sharesection
+  text-align center
+
+#new-survey-description
+  margin-top 10px
+
+.notesforquestions
+  margin-bottom 10px
+
+.edit-type-select
+  margin-top 10px
+
+.edit-question-save-cancel-btns
+  margin-top 10px
+
+select
+  margin 10px 0
+  max-width 200px
+
+.view-results-survey-header
+  text-align center
+
+.navbar-fixed-bottom
+  padding-top 5px
+
+// STYLING ///////////////////////////////
+
+// Body
+body
+  background-color #E7E7E7
+  font-family 'Roboto', sans-serif
+
+// Navbar
+#navbar-brand
+  color #67B25F
+
+#navbar-loggedin, #navbar-logout, #navbar-login, #navbar-register
+  color rgb(40, 96, 144)
+  font-weight bold
+  font-size 1.1em
+
+
+// Home Page Banner
+.banner
+  background-repeat no-repeat
+  color #fff
+  background-color #364a88
+  font-family 'Roboto', sans-serif
+
+// Home page headers
+
+.home-page-headers
+  margin-bottom 175px
+.loginsection, .customersection, .sharesection
+  color #58c358
+  font-family 'Roboto', sans-serif
+
+.list-group-item
+  box-shadow 5px 4px grey
+  border 1px solid black
+
+.navbar-fixed-bottom
+  text-align center
+  color rgb(40, 96, 144)
