@@ -112,8 +112,8 @@ app.use('/', homeRoutes);
 
 
 // SERVER /////////////////////////////////////////////////////////
-
-var server = app.listen(3000, function() {
+var port = process.env.PORT || 3000;
+var server = app.listen(process.env.PORT, function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log("Magical Team Turing survey app listening at http://%s:%s", host, port);
