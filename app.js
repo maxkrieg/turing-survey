@@ -7,7 +7,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/turingdb');
 
-var MongoURI = 'mongodb://localhost/turingdb';
+var MongoURI = process.env.MONGO_URI || 'mongodb://localhost/turingdb';
+
 mongoose.connect(MongoURI, function(err, res) {
   if (err) {
     console.log('ERROR connecting to: ' + MongoURI + '. ' + err);
