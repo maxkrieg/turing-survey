@@ -84,8 +84,6 @@ app.use(session({
 }));
 
 
-
-
 app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -112,8 +110,8 @@ app.use('/', homeRoutes);
 
 
 // SERVER /////////////////////////////////////////////////////////
-var port = process.env.PORT || 3000;
-var server = app.listen(process.env.PORT, function() {
+var appPort = process.env.PORT || 3000;
+var server = app.listen(appPort, function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log("Magical Team Turing survey app listening at http://%s:%s", host, port);
