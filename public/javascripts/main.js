@@ -1,48 +1,8 @@
 $(document).ready(function() {
 
-  // DASHBOARD VIEW ////////////////////////////////////////////////////////////////////////////
+  // DELETE A SURVEY //////////////////////////////////////////////////////////////////////
 
-  // DELETE A SURVEY
-  $('.delete-survey').on('click', function(e) {
-    e.preventDefault();
-    var surveyId = $(this).attr('data-id');
-    var $thisButton = $(this);
-
-    $.ajax({
-      url: '/surveys/' + surveyId,
-      type: 'DELETE'
-    }).done(function() {
-      console.log('success deleting survey');
-      $thisButton.parents('.list-group-item').remove();
-    }).fail(function() {
-      console.log("error DELETING SURVEY");
-    });
-  });
-
-  // EDIT SURVEY  ////////////////////////////////////////////////////////////////////////////
-
-  $('.edit-survey-submit').on('click', function() {
-    var title = $('#survey-title').val();
-    var description = $('#survey-description').val();
-    var surveyId = $('h2').attr('id');
-    var url = '/surveys/' + surveyId;
-
-    var survey = {
-      title: title,
-      description: description
-    };
-
-    $.ajax({
-      method: 'PUT',
-      url: url,
-      data: JSON.stringify(survey),
-      contentType: "application/json; charset=utf-8"
-    }).done(function() {
-      console.log("success updating survey");
-    }).fail(function() {
-      console.log("error updating survey");
-    });
-  });
+  // EDIT SURVEY  //////////////////////////////////////////////////////////////////////////
 
   // EDIT QUESTION ////////////////////////////////////////////////////////////////////////////
 
@@ -139,7 +99,7 @@ $(document).ready(function() {
 
 
 
-  // Delete a Question from Survey
+  // DELETE A QUESTION /////////////////////////////////////////////////////////////////
   $('.delete-question').on('click', function(e) {
     e.preventDefault();
     var surveyId = $('h2').attr('id');
@@ -159,38 +119,6 @@ $(document).ready(function() {
 
   // CREATE SURVEY /////////////////////////////////////////////////////////////////////////////
 
-  // Hides add question form and done button by default
-  $('#new-survey-questions, .create-survey-done').hide();
-
-  // Create Survey POST request
-  $('.create-survey-submit').on('click', function(e) {
-    e.preventDefault();
-    var surveyTitle = $('#new-survey-title').val();
-    var surveyDescription = $('#new-survey-description').val();
-    console.log(surveyTitle + ': ' + surveyDescription);
-    // AJAX to POST new survey to database
-    var newSurvey = {
-      title: surveyTitle,
-      description: surveyDescription
-    };
-    var url = '/surveys';
-
-    $.ajax({
-      method: 'POST',
-      url: url,
-      data: JSON.stringify(newSurvey),
-      contentType: "application/json; charset=utf-8"
-    }).done(function(response) {
-      console.log('success creating survey');
-      $('.create-new-survey').remove();
-      $('.new-questions-list').append(response);
-      $('.multiple-choice, .scale, .text').hide();
-      $('#new-survey-questions, .create-survey-done').show();
-    }).fail(function() {
-      console.log('error POSTing survey');
-    });
-  });
-
   // Hides or show input options based on question type
   $('.new-questions-list').on('change', '.new-question-type', function() {
     var selectedType = "";
@@ -200,7 +128,7 @@ $(document).ready(function() {
     renderInputs(selectedType);
   }).change();
 
-  // Create Question POST Request
+  // POST Request for Question ///////////////////////////////////////////////
   $('.new-questions-list').on('click', '.new-question-save', function() {
     // grab question values
     var title = $('#new-question-title').val();
@@ -222,7 +150,6 @@ $(document).ready(function() {
       choices: choices
     };
 
-    //send POST request
     $.ajax({
       method: 'POST',
       url: '/surveys/' + surveyId + '/questions',
@@ -289,10 +216,8 @@ $(document).ready(function() {
       console.log("error updating question");
     });
 
-
     $(this).parents('.list-group-item').remove();
     $('#survey-questions, .view-survey-question:first-child').show();
-
 
   });
 
