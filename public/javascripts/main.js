@@ -1,7 +1,8 @@
 $(document).ready(function() {
+
   // DASHBOARD VIEW ////////////////////////////////////////////////////////////////////////////
 
-  // Delete a survey
+  // DELETE A SURVEY
   $('.delete-survey').on('click', function(e) {
     e.preventDefault();
     var surveyId = $(this).attr('data-id');
@@ -18,7 +19,7 @@ $(document).ready(function() {
     });
   });
 
-  // EDIT SURVEY VIEW ////////////////////////////////////////////////////////////////////////////
+  // EDIT SURVEY  ////////////////////////////////////////////////////////////////////////////
 
   $('.edit-survey-submit').on('click', function() {
     var title = $('#survey-title').val();
@@ -41,10 +42,18 @@ $(document).ready(function() {
     }).fail(function() {
       console.log("error updating survey");
     });
-
   });
 
   // EDIT QUESTION ////////////////////////////////////////////////////////////////////////////
+
+  // Hide edit-question form by default
+  $('.edit-question-form').hide();
+
+  // Hide edit question form on cancel button click
+  $('.edit-question-cancel').on('click', function() {
+    $('.edit-question-form').hide();
+  });
+
   // Hides or Shows based on legacy question type
   var renderInputs = function(questionType) {
     if (questionType === "Multiple Choice") {
@@ -61,9 +70,6 @@ $(document).ready(function() {
       $('.text').show();
     }
   };
-
-  // Hide the edit-question form by default
-  $('.edit-question-form').hide();
 
   // Toggle hide and show of edit-question form
   $('.edit-question').on('click', function(e) {
@@ -89,11 +95,14 @@ $(document).ready(function() {
   });
 
   // PUT changes to question
-  // remember to include the _id when sending back the JSON object
   $('.edit-question-save').on('click', function(e) {
     e.preventDefault();
+
+    // Find IDs for URL
     var surveyId = $('h2').attr('id');
     var questionId = $(this).attr('data-question-id');
+
+    // Create Question Object
     var title = $(this).parents('.list-group-item').find('#edit-question-title').val();
     var helpText = $(this).parents('.list-group-item').find('#edit-question-helptext').val();
     var type = $(this).parents('.list-group-item').find('.edit-type-select option:selected').text();
@@ -114,6 +123,7 @@ $(document).ready(function() {
       responses: responses
     };
 
+    // PUT Question
     $.ajax({
       method: 'PUT',
       url: url,
@@ -121,16 +131,13 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8"
     }).done(function() {
       console.log("success updating question");
+      $('.edit-question-form').hide();
     }).fail(function() {
       console.log("error updating question");
     });
-
-    $('.edit-question-form').hide();
   });
 
-  $('.edit-question-cancel').on('click', function() {
-    $('.edit-question-form').hide();
-  });
+
 
   // Delete a Question from Survey
   $('.delete-question').on('click', function(e) {
@@ -152,8 +159,10 @@ $(document).ready(function() {
 
   // CREATE SURVEY /////////////////////////////////////////////////////////////////////////////
 
+  // Hides add question form and done button by default
   $('#new-survey-questions, .create-survey-done').hide();
 
+  // Create Survey POST request
   $('.create-survey-submit').on('click', function(e) {
     e.preventDefault();
     var surveyTitle = $('#new-survey-title').val();
@@ -182,7 +191,7 @@ $(document).ready(function() {
     });
   });
 
-  // Hides or shows based on newly selected question type
+  // Hides or show input options based on question type
   $('.new-questions-list').on('change', '.new-question-type', function() {
     var selectedType = "";
     $('.new-question-type option:selected').each(function() {
@@ -191,6 +200,7 @@ $(document).ready(function() {
     renderInputs(selectedType);
   }).change();
 
+  // Create Question POST Request
   $('.new-questions-list').on('click', '.new-question-save', function() {
     // grab question values
     var title = $('#new-question-title').val();
@@ -234,6 +244,8 @@ $(document).ready(function() {
 
 
   // TAKE SURVEY ////////////////////////////////////////////////////////////////////////////
+
+  // Hide all but first question on initial survey view
   $('#survey-questions').children('.view-survey-question').hide();
   $('#survey-questions, .view-survey-question:first-child').show();
 
@@ -242,12 +254,13 @@ $(document).ready(function() {
     $(this).addClass('selected-radio');
   });
 
+  // POST answer to each question
   $('.next-question, .submit-survey-guest').on('click', function(e) {
     e.preventDefault();
     var questionType = $('#take-question-title').attr('data-type');
-    console.log('submitted type:' + questionType);
     var response = '';
 
+    // Getting proper type of response
     if (questionType === 'Multiple Choice') {
       response = $('.selected-radio').val();
     } else if (questionType === 'Scale') {
@@ -255,8 +268,8 @@ $(document).ready(function() {
     } else if (questionType === 'Text') {
       response = $('#text-response').val();
     }
-    console.log(response);
 
+    // Forming URL and response object
     var surveyId = $('#take-survey-title').attr('data-survey-id');
     var questionId = $('#take-question-title').attr('data-question-id');
     var url = '/surveys/' + surveyId + '/questions/' + questionId + '/response';
@@ -264,6 +277,7 @@ $(document).ready(function() {
       response: response
     };
 
+    // PUT repsonse
     $.ajax({
       method: 'PUT',
       url: url,
@@ -281,11 +295,5 @@ $(document).ready(function() {
 
 
   });
-
-  $('.radio-button')
-
-
-
-
 
 }); /* Closing for document.ready */
