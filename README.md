@@ -3,7 +3,7 @@ This was built during the Web Development Immersive course at General Assembly a
 
 There are a few features that need to be added, such as the ability to add questions to an existing survey (currently the user can only edit existing questions).
 
-The static javascript is currently being refactored using a TDD approach, so the test suite is growing.  A test suite is soon to be implemented for the back end node.js as well.
+A test suite is soon to be implemented for the back end node.js.
 
 ##User Stories & Wireframes
 Both of these are available at our group Trello Board: https://trello.com/b/ycwVZYKo/team-turing
